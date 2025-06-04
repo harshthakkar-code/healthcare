@@ -1,28 +1,60 @@
-<!--<div class="sidebar-logo">
-    <div class="welcometxt" style="float: left;"><b style="color: white;">{{title}}</b></div>
-      <button class="logoutbtn" style="color: whitesmoke; margin-right: 1%; font-weight: 600;" (click)="navigateHome()"><i class="fa fa-home"></i> Home</button>
-      <small class="sidebar-text" style="color: whitesmoke; font-weight: 600;"><i class="fa fa-user"></i> {{loggedUser}}</small>
-      <button class="logoutbtn" style="color: whitesmoke; font-weight: 600;" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</button>
-</div>-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark" class="navCss nordis-navbar" [containerInside]="false">
+  <!-- Hamburger menu icon (left) -->
+  <button style="background-color: black;" class="nordis-hamburger" (click)="toggleSidebar()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark" class="navCss"  [containerInside]="false">
-  <mdb-navbar-brand><a class="navbar-brand">{{title}}</a></mdb-navbar-brand>
+  <!-- Dashboard Title (center) -->
+  <span class="nordis-dashboard-title">
+    {{ getDashboardTitle() }}
+  </span>
+
+  <!-- Right side links -->
   <links>
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav nordis-navbar-links ml-auto">
       <li class="nav-item">
-        <a id="nav-link" class="nav-link waves-light" mdbWavesEffect (click)="navigateHome()"><i class="fa fa-home"></i> Home</a>
+        <a class="nav-link waves-light" mdbWavesEffect (click)="navigateHome()">
+          <i class="fa fa-home"></i> Home
+        </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect> Welcome {{loggedUser}}</a>
+        <a class="nav-link waves-light" mdbWavesEffect (click)="navigateDoctorsList()">
+          <i class="fa fa-user-md"></i> Doctors List
+        </a>
       </li>
       <li class="nav-item dropdown" dropdown>
-        <a id="nav-link" dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-          <i class="fa fa-user"></i> Profile<span class="caret"></span></a>
+        <a id="nav-link" dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light">
+          <i class="fa fa-user"></i> Profile <span class="caret"></span>
+        </a>
         <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-          <a> {{currRole}}</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()"><i class="fa fa-sign-out"></i> Log out</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect (click)="editProfile()">
+            <i class="fa fa-edit"></i> Edit Profile
+          </a>
+          <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()">
+            <i class="fa fa-sign-out"></i> Log out
+          </a>
         </div>
       </li>
     </ul>
   </links>
 </mdb-navbar>
+
+<!-- Sidebar overlay and drawer -->
+<div class="nordis-sidebar-overlay" *ngIf="sidebarOpen" (click)="toggleSidebar()"></div>
+<nav class="nordis-sidebar" [class.open]="sidebarOpen">
+  <button class="nordis-close-btn" (click)="toggleSidebar()" aria-label="Close menu">&times;</button>
+  <!-- Sidebar content goes here -->
+  <div class="sidebar-content">
+    <h4>Menu</h4>
+    <ul>
+      <li><a (click)="navigateHome(); toggleSidebar()">Home</a></li>
+      <li><a (click)="navigateDoctorsList(); toggleSidebar()">Doctors List</a></li>
+      <li><a (click)="checkSlots(); toggleSidebar()">Check Slots</a></li>
+      <li><a (click)="bookAppointment(); toggleSidebar()">New Appointment</a></li>
+      <li><a (click)="approvalStatus(); toggleSidebar()">Approval Status</a></li>
+      <!-- <li><a (click)="editProfile(); toggleSidebar()">Edit Profile</a></li>
+      <li><a (click)="logout(); toggleSidebar()">Log out</a></li> -->
+      <!-- Add more menu items here -->
+    </ul>
+  </div>
+</nav>
