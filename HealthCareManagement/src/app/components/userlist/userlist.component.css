@@ -1,70 +1,103 @@
-@import url('https://fonts.googleapis.com/css2?family=Aladin&family=Merienda+One&family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;500;400&display=swap');
 
-.row
-  {
-    margin-left: 10%;
-    margin-top: 3%;
+/* Heading Style */
+.nordis-main-heading {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 2.1rem;
+  color: #195667;
+  font-weight: 800;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 22px;
+  letter-spacing: 0.5px;
+}
+
+.nordis-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(310px, 1fr));
+  gap: 32px;
+  padding: 16px 6vw 24px 6vw;
+}
+
+.nordis-doctor-card {
+  background: #fafdfe;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(62,194,184,0.09), 0 1.5px 6px rgba(62,194,184,0.04);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: transform .18s, box-shadow .18s;
+  min-height: 340px;
+}
+
+.nordis-doctor-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 10px 32px rgba(62,194,184,0.16);
+}
+
+.nordis-doctor-image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.nordis-doctor-avatar {
+  background: linear-gradient(120deg, #3dc2b8 0%, #62e0e3 100%);
+  border-radius: 50%;
+  width: 98px;
+  height: 98px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(62,194,184,0.12);
+}
+.nordis-doctor-avatar img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+/* Card Details: Label & Value Pairs */
+.nordis-doctor-details {
+  width: 100%;
+  padding: 18px 26px 10px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.nordis-detail-row {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.nordis-label {
+  color: #9fc0bd;
+  font-weight: 700;
+  min-width: 116px;   /* makes all values line up neatly */
+  letter-spacing: 0.4px;
+  font-size: 1.08rem;
+}
+
+.nordis-value {
+  color: #18667a;
+  font-weight: 700;
+  text-align: left;
+  font-size: 1.08rem;
+  word-break: break-word;
+}
+
+/* Responsive tweaks */
+@media (max-width: 700px) {
+  .nordis-grid {
+    grid-template-columns: 1fr;
+    padding: 16px 2vw 24px 2vw;
   }
-  #bloodCards
-  {
-    margin-right: 5%;
-    margin-bottom: 4%;
-    width: 50%;
-    border-radius: 15px;
-    padding: 0px;
-    transition: transform .2s;
-    box-shadow: 5px 5px 25px 8px rgb(147, 158, 147);
-  }
-  #bloodCards:hover
-  {
-    transform: scale(1.05);
-    cursor: pointer;
-  }
-.card-block
-{
-  margin-top: -43%;
-  margin-left: 45%;
-  margin-bottom: 6%;
-}
-.text{
-  font-family: serif;
-  font-size: larger;
-  font-weight: bolder;
-}
-#searchtxt
-{
-  width: 20%;
-  float: right;
-}
-.img-block{
-    width: 40%;
-    height: 180px;
-    border-radius: 15px;
-    background-color: white;
-}
-.circle{
-    background-color: rgb(212, 188, 50);
-    margin-left: auto;
-    margin-right: auto;
-    align-content: center;
-    margin-top: 10%;
-    margin-bottom: auto;
-    border-radius: 50%;
-    width: 90%;
-    height: 80%;
-}
-.bloodimg
-{
-    margin-left: 13%;
-    margin-top: 8%;
-}
-.heading-text
-{
-    font-weight: bolder;
-    font-size: 40px;
-    margin-top: 0.5%;
-    color: green;
-    font-family: 'Aladin', cursive;
-    letter-spacing: 1px;
-    margin-left: 45%;
+  .nordis-doctor-card { min-height: 340px; }
 }

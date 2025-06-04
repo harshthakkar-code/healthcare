@@ -1,45 +1,54 @@
 <app-header></app-header>
 
-<div class="heading-text"><b>Your Today's Appointments</b></div>
-<small class="subheading-text"><b>(all details of patients have been verified)</b></small>
-<div class="row">
-        <div *ngFor="let patient of appointments | async" class="col-4 card" id="bloodCards">
-         <div class="img-block">
-            <div class="circle">
-                <img *ngIf="patient.gender === 'Male' || patient.gender === 'male'"  class="bloodimg" [src]="'assets/img/maleuser.png'" width="120" height="120">
-                <img *ngIf="patient.gender === 'Female' || patient.gender === 'female'"  class="bloodimg" [src]="'assets/img/femaleuser.png'" width="120" height="120">
-            </div>
-        </div>
-        <div class="card-block">
-            <div class="text"><b style="color: darkblue">Patient ID : </b><b style="color: maroon;"><small class="date-cover">{{patient.patientid}}</small></b></div>
-            <div class="text"><b style="color: darkblue">Patient Name : </b><b style="color: maroon;"> {{patient.patientname}} </b></div>
-            <div class="text"><b style="color: darkblue">Email : </b><b style="color: maroon;"> {{patient.email}} </b></div>
-                <div class="text" *ngFor="let slot of slots | async">
-                    <div *ngIf="patient.slot === 'AM slot' && slot.amstatus === 'booked' && patient.date === slot.date">
-                        <div><b style="color: darkblue; font-weight: bold;">Booked Slot : </b><small class="slotcover">{{slot.amslot}}</small></div>
-                    </div>
-                    <div *ngIf="patient.slot === 'Noon slot' && slot.noonstatus === 'booked' && patient.date === slot.date">
-                        <div><b style="color: darkblue; font-weight: bold;">Booked Slot : </b><small class="slotcover">{{slot.noonslot}}</small></div>
-                    </div>
-                    <div *ngIf="patient.slot === 'PM slot' && slot.pmstatus === 'booked' && patient.date === slot.date">
-                        <div><b style="color: darkblue; font-weight: bold;">Booked Slot : </b><small class="slotcover">{{slot.pmslot}}</small></div>
-                    </div>
-               </div>
-            <div class="text"><b style="color: darkblue">Patient Age : </b><b style="color: maroon;"> {{patient.age}} </b></div>
-            <div class="text"><b style="color: darkblue">Patient Gender : </b><b style="color: maroon;"> {{patient.gender}} </b></div>
-            <div class="text"><b style="color: darkblue">Patient Disease : </b><b style="color: maroon;"> {{patient.problem}} </b></div>
-        </div>
-        <div style="border: none;" class="status-btn1" *ngIf="patient.admissionstatus === 'false'"><b style="font-style: italic; font-weight: bolder;">Admission Pending</b></div>
-        <div *ngIf="patient.appointmentstatus === 'accept' && currRole === 'doctor' || currRole === 'DOCTOR'" >
-            <div class="status-btn">Booking Accepted</div>
-        </div>
-        <div *ngIf="patient.appointmentstatus === 'reject' && currRole === 'doctor' || currRole === 'DOCTOR'" >
-            <div class="status-btn2">Booking Rejected</div>
-        </div>
-        <div *ngIf="patient.appointmentstatus === 'false' && currRole === 'doctor' || currRole === 'DOCTOR'" >
-            <div class="status-btn1">Approval Pending</div>
-        </div>
+
+ <h2 class="approval-status-heading">
+  Your Your Today's Appointments <small>(all details of patients have been verified)</small>
+</h2>
+<div class="nordis-appointments-grid">
+  <div *ngFor="let patient of appointments | async" class="nordis-appointment-card">
+    <div class="nordis-appointment-image">
+      <div class="nordis-appointment-avatar">
+        <img *ngIf="patient.gender === 'Male' || patient.gender === 'male'" [src]="'assets/img/maleuser.png'" alt="Male Patient">
+        <img *ngIf="patient.gender === 'Female' || patient.gender === 'female'" [src]="'assets/img/femaleuser.png'" alt="Female Patient">
+      </div>
     </div>
+    <div class="nordis-appointment-details">
+      <span class="nordis-label">Patient ID:</span>
+      <span class="nordis-value">{{patient.patientid}}</span>
+      <span class="nordis-label">Name:</span>
+      <span class="nordis-value">{{patient.patientname}}</span>
+      <span class="nordis-label">Email:</span>
+      <span class="nordis-value">{{patient.email}}</span>
+      <span class="nordis-label">Booked Slot:</span>
+      <span class="nordis-value">
+        <ng-container *ngFor="let slot of slots | async">
+          <span *ngIf="patient.slot === 'AM slot' && slot.amstatus === 'booked' && patient.date === slot.date">{{slot.amslot}}</span>
+          <span *ngIf="patient.slot === 'Noon slot' && slot.noonstatus === 'booked' && patient.date === slot.date">{{slot.noonslot}}</span>
+          <span *ngIf="patient.slot === 'PM slot' && slot.pmstatus === 'booked' && patient.date === slot.date">{{slot.pmslot}}</span>
+        </ng-container>
+      </span>
+      <span class="nordis-label">Age:</span>
+      <span class="nordis-value">{{patient.age}}</span>
+      <span class="nordis-label">Gender:</span>
+      <span class="nordis-value">{{patient.gender}}</span>
+      <span class="nordis-label">Disease:</span>
+      <span class="nordis-value">{{patient.problem}}</span>
+    </div>
+    <div
+      class="nordis-status"
+      [ngClass]="{
+        'pending': patient.admissionstatus === 'false',
+        'approved': patient.appointmentstatus === 'accept' && (currRole === 'doctor' || currRole === 'DOCTOR'),
+        'rejected': patient.appointmentstatus === 'reject' && (currRole === 'doctor' || currRole === 'DOCTOR')
+      }"
+    >
+      <b *ngIf="patient.admissionstatus === 'false'">Admission Pending</b>
+      <b *ngIf="patient.appointmentstatus === 'accept' && (currRole === 'doctor' || currRole === 'DOCTOR')">Accepted</b>
+      <b *ngIf="patient.appointmentstatus === 'reject' && (currRole === 'doctor' || currRole === 'DOCTOR')">Rejected</b>
+      <b *ngIf="patient.appointmentstatus === 'false' && (currRole === 'doctor' || currRole === 'DOCTOR')">Pending</b>
+    </div>
+  </div>
 </div>
+
 <br><br><br>
 <app-footer></app-footer>

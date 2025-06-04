@@ -1,23 +1,39 @@
 <app-header></app-header>
 
-<div class="heading-text"><b>User List</b></div>
-<div class="row">
-    <div  *ngFor="let user of users | async" class="col-4 card" id="bloodCards">
-        <div class="img-block">
-            <div class="circle">
-                <img *ngIf="user.gender === 'Male' || user.gender === 'male'"  class="bloodimg" [src]="'assets/img/maleuser.png'" width="100" height="100">
-                <img *ngIf="user.gender === 'Female' || user.gender === 'female'"  class="bloodimg" [src]="'assets/img/femaleuser.png'" width="100" height="120">
-            </div>
-        </div>
-        <div class="card-block">
-            <div class="text"><b style="color: maroon;"> {{user.username}} </b></div>
-            <div class="text"><b style="color: maroon;"> {{user.email}} </b></div>
-            <div class="text"><b style="color: maroon;"> {{user.age}} years </b></div>
-            <div class="text"><b style="color: maroon;"> {{user.gender}} </b></div>
-            <div class="text"><b style="color: maroon;"> {{user.mobile}} </b></div>
-        </div>
+<div class="nordis-main-heading">User List</div>
+
+<div class="nordis-grid">
+  <div *ngFor="let user of users | async" class="nordis-doctor-card">
+    <div class="nordis-doctor-image">
+      <div class="nordis-doctor-avatar">
+        <img *ngIf="user.gender === 'Male' || user.gender === 'male'" [src]="'assets/img/maleuser.png'" alt="Male User">
+        <img *ngIf="user.gender === 'Female' || user.gender === 'female'" [src]="'assets/img/femaleuser.png'" alt="Female User">
+      </div>
+    </div>
+    <div class="nordis-doctor-details">
+      <div class="nordis-detail-row">
+        <span class="nordis-label">Name:</span>
+        <span class="nordis-value">{{user.username}}</span>
+      </div>
+      <div class="nordis-detail-row">
+        <span class="nordis-label">Email:</span>
+        <span class="nordis-value">{{user.email}}</span>
+      </div>
+      <div class="nordis-detail-row">
+        <span class="nordis-label">Age:</span>
+        <span class="nordis-value">{{user.age}} years</span>
+      </div>
+      <div class="nordis-detail-row">
+        <span class="nordis-label">Gender:</span>
+        <span class="nordis-value">{{user.gender}}</span>
+      </div>
+      <div class="nordis-detail-row">
+        <span class="nordis-label">Mobile:</span>
+        <span class="nordis-value">{{user.mobile}}</span>
+      </div>
     </div>
   </div>
+</div>
 
 <br><br><br>
 <app-footer></app-footer>
