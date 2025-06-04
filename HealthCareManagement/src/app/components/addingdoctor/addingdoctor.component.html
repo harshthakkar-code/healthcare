@@ -1,116 +1,142 @@
-<div class="doctor-bg">
-  <div class="doctor-card">
-    <h2 class="doctor-title">
-      <i class="fa fa-user-md"></i> New Doctor
-    </h2>
-    <div class="doctor-subinfo">
-      On adding a doctor, they will be approved to work in the hospital management by default
+<app-header></app-header>
+
+<div class="container" id="add-doctor-form">
+  <h2 class="textual"><i class="fa fa-user-md"></i> Add New Doctor</h2>
+  <small style="color:maroon; font-weight: bold; text-align:center; display:block; margin-bottom:16px;">
+    Please fill in all the required fields to add a new doctor to the hospital management system
+  </small>
+  <form #addDoctorform="ngForm" (ngSubmit)="addDoctor()">
+
+    <!-- Doctor Name -->
+    <div class="form-group">
+      <label for="doctorname">Doctor Name <b class="text-danger">*</b></label>
+      <input type="text" class="form-control" id="doctorname" name="doctorname"
+        [(ngModel)]="doctor.doctorname" required #doctorname="ngModel"
+        placeholder="Enter doctor's full name"
+        [class.is-invalid]="doctorname.invalid && doctorname.touched">
+      <small class="text-danger" *ngIf="doctorname.errors?.required && doctorname.touched">
+        Doctor name is required.
+      </small>
     </div>
-    <form #addDoctorform="ngForm" (ngSubmit)="addDoctor()">
-      <!-- Doctor Name -->
-      <div class="form-group">
-        <label>Doctor Name <b class="text-danger">*</b></label>
-        <input type="text" name="doctorname" [(ngModel)]="doctor.doctorname" required #doctorname="ngModel" placeholder="Enter doctor name" />
-        <div class="doctor-error">
-          <span *ngIf="doctorname.invalid && doctorname.touched">Name is required</span>
-        </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email Address <b class="text-danger">*</b></label>
+      <input type="email" class="form-control" id="email" name="email"
+        [(ngModel)]="doctor.email" required
+        pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" #email="ngModel"
+        placeholder="Enter a valid email address"
+        [class.is-invalid]="email.invalid && email.touched">
+      <small class="text-danger" *ngIf="email.errors?.required && email.touched">Email is required.</small>
+      <small class="text-danger" *ngIf="email.errors?.pattern && email.touched">Invalid email address.</small>
+    </div>
+
+    <!-- Mobile Number -->
+    <div class="form-group">
+      <label for="mobile">Mobile Number <b class="text-danger">*</b></label>
+      <input type="tel" class="form-control" id="mobile" name="mobile"
+        [(ngModel)]="doctor.mobile" required #mobile="ngModel"
+        maxlength="10" minlength="10"
+        placeholder="Enter 10-digit mobile number"
+        [class.is-invalid]="mobile.invalid && mobile.touched">
+      <small class="text-danger" *ngIf="mobile.errors?.required && mobile.touched">Mobile number is required.</small>
+      <small class="text-danger" *ngIf="(mobile.errors?.minlength || mobile.errors?.maxlength) && mobile.touched">
+        Mobile number must be 10 digits.
+      </small>
+    </div>
+
+    <!-- Gender -->
+    <div class="form-group">
+      <label for="gender">Gender <b class="text-danger">*</b></label>
+      <select class="form-control" id="gender" name="gender"
+        [(ngModel)]="doctor.gender" #gender="ngModel" required
+        [class.is-invalid]="gender.invalid && gender.touched">
+        <option value="" disabled selected>Select gender</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+      <small class="text-danger" *ngIf="gender.errors?.required && gender.touched">
+        Gender is required.
+      </small>
+    </div>
+
+    <!-- Experience -->
+    <div class="form-group">
+      <label for="experience">Experience (years) <b class="text-danger">*</b></label>
+      <input type="number" class="form-control" id="experience" name="experience"
+        [(ngModel)]="doctor.experience" required #experience="ngModel" min="3"
+        placeholder="Enter years of experience (minimum 3)"
+        [class.is-invalid]="experience.invalid && experience.touched">
+      <small class="text-danger" *ngIf="experience.errors?.required && experience.touched">Experience is required.</small>
+      <small class="text-danger" *ngIf="experience.errors?.min && experience.touched">Minimum 3 years required.</small>
+    </div>
+
+    <!-- Specialization -->
+    <div class="form-group">
+      <label for="specialization">Specialization <b class="text-danger">*</b></label>
+      <input type="text" class="form-control" id="specialization" name="specialization"
+        [(ngModel)]="doctor.specialization" required #specialization="ngModel"
+        placeholder="Enter medical specialization"
+        [class.is-invalid]="specialization.invalid && specialization.touched">
+      <small class="text-danger" *ngIf="specialization.errors?.required && specialization.touched">
+        Specialization is required.
+      </small>
+    </div>
+
+    <!-- Previous Hospital -->
+    <div class="form-group">
+      <label for="previoushospital">Previous Hospital <b class="text-danger">*</b></label>
+      <input type="text" class="form-control" id="previoushospital" name="previoushospital"
+        [(ngModel)]="doctor.previoushospital" required #previoushospital="ngModel"
+        placeholder="Enter previous hospital name"
+        [class.is-invalid]="previoushospital.invalid && previoushospital.touched">
+      <small class="text-danger" *ngIf="previoushospital.errors?.required && previoushospital.touched">
+        Previous hospital is required.
+      </small>
+    </div>
+
+    <!-- Address -->
+    <div class="form-group">
+      <label for="address">Address <b class="text-danger">*</b></label>
+      <input type="text" class="form-control" id="address" name="address"
+        [(ngModel)]="doctor.address" required #address="ngModel"
+        placeholder="Enter complete address"
+        [class.is-invalid]="address.invalid && address.touched">
+      <small class="text-danger" *ngIf="address.errors?.required && address.touched">
+        Address is required.
+      </small>
+    </div>
+
+    <!-- Password -->
+    <div class="form-group">
+      <label for="pwd">Password <b class="text-danger">*</b></label>
+      <div class="password-field">
+        <input [type]="showDoctorPassword ? 'text' : 'password'"
+          class="form-control"
+          id="pwd" name="pwd"
+          [(ngModel)]="doctor.password" required #doctorpassword="ngModel"
+          placeholder="Enter password"
+          [class.is-invalid]="doctorpassword.invalid && doctorpassword.touched">
+        <span class="eye-icon" (click)="showDoctorPassword = !showDoctorPassword">
+          <!-- SVG icons remain as before -->
+        </span>
       </div>
-      <!-- Email -->
-      <div class="form-group">
-        <label>Email <b class="text-danger">*</b></label>
-        <input type="email" name="email" [(ngModel)]="doctor.email" required #email="ngModel" placeholder="Enter email" />
-        <div class="doctor-error">
-          <span *ngIf="email.invalid && email.touched">Email is required</span>
-        </div>
-      </div>
-      <!-- Mobile Number -->
-      <div class="form-group">
-        <label>Mobile Number <b class="text-danger">*</b></label>
-        <input type="tel" name="mobile" [(ngModel)]="doctor.mobile" required #mobile="ngModel" maxlength="10" minlength="10" placeholder="Enter mobile number" />
-        <div class="doctor-error">
-          <span *ngIf="mobile.invalid && mobile.touched">Mobile is required</span>
-        </div>
-      </div>
-      <!-- Gender -->
-      <div class="form-group">
-        <label>Gender <b class="text-danger">*</b></label>
-        <select name="gender" [(ngModel)]="doctor.gender" #gender="ngModel" required>
-          <option value="" disabled selected>Select Gender</option>
-          <option>Male</option>
-          <option>Female</option>
-          <option>Others</option>
-        </select>
-        <div class="doctor-error">
-          <span *ngIf="gender.invalid && gender.touched">Gender is required</span>
-        </div>
-      </div>
-      <!-- Experience -->
-      <div class="form-group">
-        <label>Experience (years) <b class="text-danger">*</b></label>
-        <input type="number" name="experience" [(ngModel)]="doctor.experience" required #experience="ngModel" min="3" placeholder="Enter experience (min 3)" />
-        <div class="doctor-error">
-          <span *ngIf="experience.invalid && experience.touched">Minimum 3 years</span>
-        </div>
-      </div>
-      <!-- Specialization -->
-      <div class="form-group">
-        <label>Specialization <b class="text-danger">*</b></label>
-        <input type="text" name="specialization" [(ngModel)]="doctor.specialization" required #specialization="ngModel" placeholder="Specialization" />
-        <div class="doctor-error">
-          <span *ngIf="specialization.invalid && specialization.touched">Specialization is Required</span>
-        </div>
-      </div>
-      <!-- Previous Hospital -->
-      <div class="form-group">
-        <label>Previous Hospital <b class="text-danger">*</b></label>
-        <input type="text" name="previoushospital" [(ngModel)]="doctor.previoushospital" required #previoushospital="ngModel" placeholder="Previous Hospital" />
-        <div class="doctor-error">
-          <span *ngIf="previoushospital.invalid && previoushospital.touched">Hospital is Required</span>
-        </div>
-      </div>
-      <!-- Address -->
-      <div class="form-group">
-        <label>Address <b class="text-danger">*</b></label>
-        <input type="text" name="address" [(ngModel)]="doctor.address" required #address="ngModel" placeholder="Address" />
-        <div class="doctor-error">
-          <span *ngIf="address.invalid && address.touched"> Address is Required</span>
-        </div>
-      </div>
-      <!-- Password -->
-      <div class="form-group">
-        <label>Password <b class="text-danger">*</b></label>
-        <div class="password-field">
-          <input
-            [type]="showDoctorPassword ? 'text' : 'password'"
-            name="pwd"
-            [(ngModel)]="doctor.password"
-            required
-            #doctorpassword="ngModel"
-            placeholder="Password *"
-          />
-          <span class="eye-icon" (click)="showDoctorPassword = !showDoctorPassword">
-            <svg *ngIf="!showDoctorPassword" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-              width="22" height="22" fill="none">
-              <ellipse cx="12" cy="12" rx="9" ry="6" stroke="#aaa" stroke-width="2" />
-              <line x1="4" y1="20" x2="20" y2="4" stroke="#aaa" stroke-width="2" />
-            </svg>
-            <svg *ngIf="showDoctorPassword" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-              width="22" height="22" fill="none">
-              <ellipse cx="12" cy="12" rx="9" ry="6" stroke="#3dc2b8" stroke-width="2" />
-              <circle cx="12" cy="12" r="2.5" fill="#3dc2b8" />
-            </svg>
-          </span>
-        </div>
-        <div class="doctor-error">
-          <span *ngIf="doctorpassword.invalid && doctorpassword.touched">Password required</span>
-        </div>
-      </div>
-      <!-- Authorized Checkbox -->
-      <div class="form-group-checkbox">
-        <input type="checkbox" name="remember" required style="margin-right:10px; width:18px; height:18px;" />
-        <span>Authorized Doctor</span>
-      </div>
-      <button [disabled]="addDoctorform.form.invalid" type="submit" class="doctor-btn"><i class="fa fa-plus"></i>&nbsp; Add Doctor</button>
-    </form>
-  </div>
+      <small class="text-danger" *ngIf="doctorpassword.errors?.required && doctorpassword.touched">
+        Password is required.
+      </small>
+    </div>
+
+    <!-- Authorized Checkbox -->
+    <div class="form-group" style="display:flex;align-items:center;">
+      <input type="checkbox" id="authorized" name="authorized" required style="margin-right:10px;">
+      <label for="authorized" style="margin:0;">I confirm this doctor is authorized to practice</label>
+    </div>
+
+    <button [disabled]="addDoctorform.form.invalid" type="submit" class="btn registerbtn">
+      <i class="fa fa-plus"></i>&nbsp; Add Doctor
+    </button>
+  </form>
 </div>
+
+<app-footer></app-footer>

@@ -27,13 +27,13 @@ export class AddingdoctorComponent implements OnInit {
     
       data => {
         console.log("Doctor added successfully");
-        const snack = this.snackBar.open('Doctor added successfully!', '', {
-          duration: 2000,
-          panelClass: ['success-snackbar']
-        });
-        snack.afterDismissed().subscribe(() => {
-          this._router.navigate(['/admindashboard']);
-        });
+        // const snack = this.snackBar.open('Doctor added successfully!', '', {
+        //   duration: 2000,
+        //   panelClass: ['success-snackbar']
+        // });
+        // snack.afterDismissed().subscribe(() => {
+        //   this._router.navigate(['/admindashboard']);
+        // });
       },
       error => {
         console.log("Error occurred while adding doctor");
