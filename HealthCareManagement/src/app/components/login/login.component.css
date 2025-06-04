@@ -1,118 +1,176 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
-@import '~font-awesome/css/font-awesome.css';
-@import url('https://fonts.googleapis.com/css2?family=Aladin&family=Merienda+One&family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap');
 
-.container
-{
-    max-width: 450px;
-    padding: 3px 40px 40px 40px;
-    margin-top: 2%; 
-    margin-bottom: 3%; 
-    border-radius: 10px; 
-    box-shadow: 5px 5px 35px 8px rgb(147, 158, 147); 
-    border-top: 8px solid rgb(6, 50, 53); 
-    background-color: white;
+body {
+  background: #fff;
+  font-family: 'Montserrat', Arial, sans-serif;
 }
-input{
-    border-radius: 12px;
-    margin-top: 8px;
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background: #fff;
+  padding: 40px 0;
 }
-.textual
-{
-    color: rgb(64, 85, 15); 
-    text-align: center; 
-    margin-top: -20px;
-    font-family: 'Aladin', cursive;
-    padding: 5px;
-    text-transform: uppercase;
+.nordis-login-container {
+  display: flex;
+  background: #fff;
+  border-radius: 30px;
+  box-shadow: 0 12px 32px rgba(32, 40, 58, 0.08);
+  max-width: 880px;
+  width: 100%;
+  overflow: hidden;
 }
-
-.loginbtn
-{
-    background-color: transparent;
-    padding-left: 8%;
-    padding-right: 8%;
-    padding-bottom: 7px;
-    border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: black;
-    margin: auto;  
-    border: 1px solid black;
-    margin-top: 10px;
+.nordis-info-side {
+  background: #fff;
+  flex: 1;
+  padding: 38px 38px;
+  min-width: 270px;
+  border-right: 1px solid #f0f4f8;
 }
-.loginbtn:hover
-{
-    background-color: rgb(23, 78, 78);
-    padding-left: 7%;
-    padding-right: 7%;
-    cursor: pointer;
-    color: white;
+.nordis-info-side h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #111;
+  letter-spacing: -1px;
 }
-.fa-google{
-    background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    cursor: pointer;
+.nordis-info-side h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 24px 0 8px 0;
+  color: #111;
 }
-.fa-linkedin
-{
-    background: #0e76a8;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    cursor: pointer;
+.nordis-info-side p {
+  color: #929fb1;
+  font-size: 1rem;
+  margin-bottom: 4px;
+  line-height: 1.7;
 }
-.fa-windows
-{
-    background: conic-gradient(from -90deg, #F65314 90deg,  #7CBB00 90deg 180deg, #FFBB00 90deg 270deg, #00A1F1 270deg) 73% 55%/150% 150% no-repeat;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    cursor: pointer;
+.nordis-form-side {
+  flex: 2;
+  padding: 38px 38px;
+  background: #f8fdff;
+  min-width: 320px;
 }
-.fa-twitter
-{
-    background-color: #1DA1F2;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    cursor: pointer;
+.nordis-tabs {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
 }
-.fa-github
-{
-    background-color: #333;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    cursor: pointer;
+.nordis-tabs button {
+  background: none;
+  border: none;
+  font-weight: 600;
+  font-size: 1.08rem;
+  padding: 8px 32px;
+  border-radius: 22px;
+  color: #1d3148;
+  background: #ecf8fb;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+  opacity: 0.7;
+  margin-bottom: 8px;
 }
-.fa-google:hover, .fa-linkedin:hover, .fa-windows:hover, .fa-github:hover, .fa-twitter:hover
-{
-    font-size:2.5em;
-  transition: 1s ease-out;
+.nordis-tabs button.active, .nordis-tabs button:hover {
+  background: #7fd8e7;
+  color: #fff;
+  opacity: 1;
 }
-
-.headbtn1, .headbtn2, .headbtn3{
-    border: none;
-    padding: 2% 20px 2% 20px;
-    width: 122px;
-    font-weight: bold;
-    background-color: transparent;
-    margin-left: 0px;
+.nordis-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
-.headbtn1:hover, .headbtn2:hover, .headbtn3:hover{
-    background-color: rgb(223, 231, 184);
+.nordis-login-form h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #111;
+  letter-spacing: -0.5px;
 }
-
-.headbtn1{
-    margin-top: -40%;
-    margin-bottom: 10%;
+.nordis-login-form label {
+  color: #1e2737;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+.nordis-login-form .form-control {
+  width: 100%;
+  background: #ecf8fb;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 1rem;
+  color: #272e3a;
+  box-shadow: none;
+  transition: box-shadow 0.2s;
+  outline: none;
+}
+.nordis-login-form .form-control:focus {
+  box-shadow: 0 0 0 2px #87c8e4;
+  background: #e6f4fa;
+}
+.nordis-login-form .checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+.nordis-login-form .loginbtn {
+  margin: 28px 0 0 0;
+  background: #76c8d7;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  padding: 13px 0;
+  border-radius: 24px;
+  font-size: 1.13rem;
+  box-shadow: 0 3px 18px 0 rgba(118,200,215,0.12);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.nordis-login-form .loginbtn:disabled {
+  background: #d1ecf5;
+  color: #b3bcc5;
+  cursor: not-allowed;
+}
+.nordis-login-form .loginbtn:hover:not(:disabled) {
+  background: #45b2c3;
+  color: #fff;
+}
+.nordis-login-form .sign-up {
+  text-align: center;
+  margin-top: 22px;
+  color: #222;
+}
+.nordis-login-form .sign-up small {
+  color: #41bad7;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: underline;
+}
+.nordis-login-form .forgot-link {
+  color: #41bad7;
+  cursor: pointer;
+  font-size: 0.98rem;
+}
+.text-danger {
+  color: #ed3c50 !important;
+}
+@media (max-width: 950px) {
+  .nordis-login-container {
+    flex-direction: column;
+    min-width: 340px;
+  }
+  .nordis-info-side,
+  .nordis-form-side {
+    border-right: none;
+    border-bottom: 1px solid #f0f4f8;
+  }
+  .nordis-info-side,
+  .nordis-form-side {
+    min-width: 0;
+    padding: 30px 14px;
+  }
 }

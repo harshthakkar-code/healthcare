@@ -1,135 +1,111 @@
-
 <div class="wrapper">
-    <div class="container">
-        <button class="headbtn1" id="userbtn">user</button>
-        <button class="headbtn2" id="doctorbtn">doctor</button>
-        <button class="headbtn3" id="adminbtn">admin</button>
-      <div class="user-login-form">
-       <h2 class="textual">User Login</h2>
-        <form #userloginform="ngForm" (ngSubmit)="loginUser()">
-          <small class="text-danger"><b>{{msg}}</b></small>
-            <div class="form-group">
-            <label for="email">User Email address: <b class="text-danger">*</b></label>
-            <input type="email" class="form-control" placeholder="enter email" name="email" [(ngModel)]="user.email" required pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
-            #email="ngModel"
-            [class.is-invalid]="email.invalid && email.touched"
-            >
-          <!--<small class="text-danger" [class.d-none]="email.valid || email.untouched"><b>required field</b></small>-->
-          <div *ngIf="email.errors && email.invalid && email.touched">
-            <small class="text-danger" *ngIf="email.errors.required"><b>required field</b></small>
-            <small class="text-danger" *ngIf="email.errors.pattern"><b>Invalid email Id</b></small>
-          </div>
-          </div>
-    
-          <div class="form-group">
-            <label for="pwd" style="margin-top: 5px;">User Password: <b class="text-danger">*</b></label>
-            <input type="password" class="form-control" placeholder="enter password" name="pwd" [(ngModel)]="user.password" required 
-            #password="ngModel"
-            [class.is-invalid]="password.invalid && password.touched"
-            >
-            <div *ngIf="password.errors && password.invalid && password.touched">
-              <small class="text-danger" *ngIf="password.errors.required"><b>required field</b></small>
-            </div>
-            <small style="color: gray; font-size: 10px;">atleast one uppercase, numeric digit, lowercase, special character, length of 6-20</small>
-          </div>
-    
-          <div class="checkbox" style="margin-top: 5px;">
-            <small style="color: gray;"><input type="checkbox" name="remember"> Remember me</small>
-            <small style="color: navy; margin-left: 42%; cursor: pointer;">forgot password?</small>
-          </div>
-          <button [disabled]="userloginform.form.invalid" type="submit" class="btn loginbtn">Login</button>
-        </form>
-        <div class="sign-up" style=" text-align: center; margin-top: 10px;">Don't have an Account? <small [routerLink]="['/registration']" style="color: navy; text-align: center; cursor: pointer;"><b>Create One</b></small></div>
-        <hr>
-        <p class="text-center mt-3"><b> or Login with </b></p>
-          <div class="text-center">
-            <i class="fa fa-google  mx-3 fa-2x"></i>
-            <i class="fa fa-linkedin mx-3 fa-2x"></i>
-            <i class="fa fa-twitter  mx-3 fa-2x"></i>
-            <i class="fa fa-windows  mx-3 fa-2x"></i>
-            <i class="fa fa-github  mx-3 fa-2x"></i>
-          </div>
-        </div>
+  <div class="nordis-login-container">
+    <!-- Info Side -->
+    <div class="nordis-info-side">
+      <h1>Welcome</h1>
+      <h2>Contact</h2>
+      <p>8863 North Deerfield Street Bronx, NY 1046094</p>
+      <h2>Work Times</h2>
+      <p>Mon - Fri: 9:00 AM - 6:00</p>
+      <p>Saturday: 9:00 AM - 5:00</p>
+      <p>Sunday: Closed</p>
+      <h2>Email / Phone</h2>
+      <p>+7 10 34 7892 34</p>
+      <p>info@nordis.com</p>
+    </div>
+    <!-- Form Side -->
+    <div class="nordis-form-side">
+      <!-- Tab Buttons -->
+      <div class="nordis-tabs">
+        <button [class.active]="selectedTab === 'user'" (click)="selectedTab = 'user'">User</button>
+        <button [class.active]="selectedTab === 'doctor'" (click)="selectedTab = 'doctor'">Doctor</button>
+        <button [class.active]="selectedTab === 'admin'" (click)="selectedTab = 'admin'">Admin</button>
+      </div>
 
-        <div class="doctor-login-form">
-            <h2 class="textual">Doctor Login</h2>
-             <form #doctorloginform="ngForm" (ngSubmit)="loginDoctor()">
-               <small class="text-danger"><b>{{msg}}</b></small>
-                 <div class="form-group">
-                 <label for="email">Doctor Email address: <b class="text-danger">*</b></label>
-                 <input type="email" class="form-control" placeholder="enter email" name="doctoremail" [(ngModel)]="doctor.email" required pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
-                 #doctoremail="ngModel"
-                 [class.is-invalid]="doctoremail.invalid && doctoremail.touched"
-                 >
-               <!--<small class="text-danger" [class.d-none]="doctoremail.valid || doctoremail.untouched"><b>required field</b></small>-->
-               <div *ngIf="doctoremail.errors && doctoremail.invalid && doctoremail.touched">
-                 <small class="text-danger" *ngIf="doctoremail.errors.required"><b>required field</b></small>
-                 <small class="text-danger" *ngIf="doctoremail.errors.pattern"><b>Invalid email Id</b></small>
-               </div>
-               </div>
-         
-               <div class="form-group">
-                 <label for="pwd" style="margin-top: 5px;">Doctor Password: <b class="text-danger">*</b></label>
-                 <input type="password" class="form-control" placeholder="enter password" name="pwd" [(ngModel)]="doctor.password" required 
-                 #doctorpassword="ngModel"
-                 [class.is-invalid]="doctorpassword.invalid && doctorpassword.touched"
-                 >
-                 <div *ngIf="doctorpassword.errors && doctorpassword.invalid && doctorpassword.touched">
-                   <small class="text-danger" *ngIf="doctorpassword.errors.required"><b>required field</b></small>
-                 </div>
-                 <small style="color: gray; font-size: 10px;">atleast one uppercase, numeric digit, lowercase, special character, length of 6-20</small>
-               </div>
-         
-               <div class="checkbox" style="margin-top: 5px;">
-                 <small style="color: gray;"><input type="checkbox" name="remember"> Remember me</small>
-                 <small style="color: navy; margin-left: 42%; cursor: pointer;">forgot password?</small>
-               </div>
-               <button [disabled]="doctorloginform.form.invalid" type="submit" class="btn loginbtn">Login</button>
-             </form>
-             <div class="sign-up" style=" text-align: center; margin-top: 10px;">Don't have an Account? <small [routerLink]="['/registration']" style="color: navy; text-align: center; cursor: pointer;"><b>Create One</b></small></div>
-             <hr>
-             <p class="text-center mt-3"><b> or Login with </b></p>
-               <div class="text-center">
-                 <i class="fa fa-google  mx-3 fa-2x"></i>
-                 <i class="fa fa-linkedin mx-3 fa-2x"></i>
-                 <i class="fa fa-twitter  mx-3 fa-2x"></i>
-                 <i class="fa fa-windows  mx-3 fa-2x"></i>
-                 <i class="fa fa-github  mx-3 fa-2x"></i>
-               </div>
-             </div>
-    
-        <div class="admin-login-form">
-        <h2 class="textual">Admin Login</h2>
-        <form #adminloginform="ngForm" (ngSubmit)="adminLogin()">
-          <small class="text-danger"><b>{{msg}}</b></small>
-            <div class="form-group">
-            <label for="email"> Admin Email address: <b class="text-danger">*</b></label>
-            <input type="email" class="form-control" placeholder="enter admin email" name="email" [(ngModel)]="adminEmail" required pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
-            #adminemail="ngModel"
-            [class.is-invalid]="adminemail.invalid && adminemail.touched"
-            >
-          <!--<small class="text-danger" [class.d-none]="email.valid || email.untouched"><b>required field</b></small>-->
-          <div *ngIf="adminemail.errors && adminemail.invalid && adminemail.touched">
-            <small class="text-danger" *ngIf="adminemail.errors.required"><b>required field</b></small>
-            <small class="text-danger" *ngIf="adminemail.errors.pattern"><b>Invalid email Id</b></small>
+      <!-- User Login Form -->
+      <form *ngIf="selectedTab === 'user'" class="nordis-login-form" #userloginform="ngForm" (ngSubmit)="loginUser()">
+        <h2>User Login</h2>
+        <small class="text-danger"><b>{{msg}}</b></small>
+        <div class="form-group">
+          <label>Email <b class="text-danger">*</b></label>
+          <input type="email" class="form-control" placeholder="Enter email" name="email" [(ngModel)]="user.email" required #email="ngModel" />
+          <div *ngIf="email.errors && email.invalid && email.touched">
+            <small class="text-danger" *ngIf="email.errors.required">required field</small>
+            <small class="text-danger" *ngIf="email.errors.pattern">Invalid email Id</small>
           </div>
-          </div>
-    
-          <div class="form-group">
-            <label for="pwd" style="margin-top: 5px;">Admin Password: <b class="text-danger">*</b></label>
-            <input type="password" class="form-control" placeholder="enter admin password" name="pwd" [(ngModel)]="adminPassword" required 
-            #adminpassword="ngModel"
-            [class.is-invalid]="adminpassword.invalid && adminpassword.touched"
-            >
-            <div *ngIf="adminpassword.errors && adminpassword.invalid && adminpassword.touched">
-              <small class="text-danger" *ngIf="adminpassword.errors.required"><b>required field</b></small>
-            </div>
-            <small style="color: gray; font-size: 10px;">Only the admin knows his correct email address & password</small>
-          </div>
-    
-          <small style="color: navy; margin-left: 69%; cursor: pointer;">forgot password?</small>
-          <button [disabled]="adminloginform.form.invalid" type="submit" class="btn loginbtn">Login</button>
-        </form>
-      </div>
         </div>
-      </div>
+        <div class="form-group">
+          <label>Password <b class="text-danger">*</b></label>
+          <input type="password" class="form-control" placeholder="Enter password" name="pwd" [(ngModel)]="user.password" required #password="ngModel" />
+          <div *ngIf="password.errors && password.invalid && password.touched">
+            <small class="text-danger" *ngIf="password.errors.required">required field</small>
+          </div>
+        </div>
+        <div class="checkbox">
+          <label><input type="checkbox" name="remember"> Remember me</label>
+          <span class="forgot-link">Forgot password?</span>
+        </div>
+        <button [disabled]="userloginform.form.invalid" type="submit" class="loginbtn">Login</button>
+        <div class="sign-up">
+          Don't have an Account?
+          <small [routerLink]="['/registration']"><b>Create One</b></small>
+        </div>
+      </form>
+
+      <!-- Doctor Login Form -->
+      <form *ngIf="selectedTab === 'doctor'" class="nordis-login-form" #doctorloginform="ngForm" (ngSubmit)="loginDoctor()">
+        <h2>Doctor Login</h2>
+        <small class="text-danger"><b>{{msg}}</b></small>
+        <div class="form-group">
+          <label>Email <b class="text-danger">*</b></label>
+          <input type="email" class="form-control" placeholder="Enter email" name="doctoremail" [(ngModel)]="doctor.email" required #doctoremail="ngModel" />
+          <div *ngIf="doctoremail.errors && doctoremail.invalid && doctoremail.touched">
+            <small class="text-danger" *ngIf="doctoremail.errors.required">required field</small>
+            <small class="text-danger" *ngIf="doctoremail.errors.pattern">Invalid email Id</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Password <b class="text-danger">*</b></label>
+          <input type="password" class="form-control" placeholder="Enter password" name="pwd" [(ngModel)]="doctor.password" required #doctorpassword="ngModel" />
+          <div *ngIf="doctorpassword.errors && doctorpassword.invalid && doctorpassword.touched">
+            <small class="text-danger" *ngIf="doctorpassword.errors.required">required field</small>
+          </div>
+        </div>
+        <div class="checkbox">
+          <label><input type="checkbox" name="remember"> Remember me</label>
+          <span class="forgot-link">Forgot password?</span>
+        </div>
+        <button [disabled]="doctorloginform.form.invalid" type="submit" class="loginbtn">Login</button>
+        <div class="sign-up">
+          Don't have an Account?
+          <small [routerLink]="['/registration']"><b>Create One</b></small>
+        </div>
+      </form>
+
+      <!-- Admin Login Form -->
+      <form *ngIf="selectedTab === 'admin'" class="nordis-login-form" #adminloginform="ngForm" (ngSubmit)="adminLogin()">
+        <h2>Admin Login</h2>
+        <small class="text-danger"><b>{{msg}}</b></small>
+        <div class="form-group">
+          <label>Email <b class="text-danger">*</b></label>
+          <input type="email" class="form-control" placeholder="Enter admin email" name="email" [(ngModel)]="adminEmail" required #adminemail="ngModel" />
+          <div *ngIf="adminemail.errors && adminemail.invalid && adminemail.touched">
+            <small class="text-danger" *ngIf="adminemail.errors.required">required field</small>
+            <small class="text-danger" *ngIf="adminemail.errors.pattern">Invalid email Id</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Password <b class="text-danger">*</b></label>
+          <input type="password" class="form-control" placeholder="Enter admin password" name="pwd" [(ngModel)]="adminPassword" required #adminpassword="ngModel" />
+          <div *ngIf="adminpassword.errors && adminpassword.invalid && adminpassword.touched">
+            <small class="text-danger" *ngIf="adminpassword.errors.required">required field</small>
+          </div>
+        </div>
+        <div class="checkbox" style="justify-content:flex-end;">
+          <span class="forgot-link">Forgot password?</span>
+        </div>
+        <button [disabled]="adminloginform.form.invalid" type="submit" class="loginbtn">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
