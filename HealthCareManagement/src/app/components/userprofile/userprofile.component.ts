@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
+import * as $ from 'jquery';
+
 
 @Component({
   selector: 'app-userprofile',

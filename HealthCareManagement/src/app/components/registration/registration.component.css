@@ -1,149 +1,315 @@
-@import url('https://fonts.googleapis.com/css2?family=Aladin&family=Merienda+One&family=Staatliches&display=swap');
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent accidental horizontal scroll */
+}
 
-.register{
-    background: -webkit-linear-gradient(left, #0e5551, #48c5bf);
-    margin-top: 1.2%;
-    margin-bottom: 3%;
-    border-radius: 15px;
-    padding: 3%;
+.nordis-register-bg {
+  min-height: 100vh;
+  min-width: 100vw;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  overflow-x: hidden; /* Prevent accidental horizontal scroll */
+  box-sizing: border-box;
+  padding: 2vw; /* Responsive horizontal padding */
 }
-.register-left{
-    text-align: center;
-    color: #fff;
-    margin-top: 4%;
+
+.nordis-register-card-wide {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 980px;
+  min-width: 0;              /* KEY: Let it shrink */
+  min-height: 650px;
+  max-height: 760px;
+  background: #fff;
+  border-radius: 32px;
+  box-shadow: 0 8px 48px rgba(33,143,133,0.13);
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 0 2vw;            /* Responsive padding inside card */
 }
-.register-left input{
-    border: none;
-    border-radius: 1.5rem;
-    padding: 2%;
-    width: 60%;
-    background: #f8faf9;
-    font-weight: bold;
-    color: #383d41;
-    margin-top: 30%;
-    margin-bottom: 3%;
-    cursor: pointer;
+
+
+.nordis-register-left {
+  background: linear-gradient(135deg, #0e5551 60%, #48c5bf 100%);
+  color: #fff;
+  padding: 0 40px;
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-.register-right{
-    background: #f8f9fa;
-    border-top-left-radius: 10% 50%;
-    border-bottom-left-radius: 10% 50%;
+
+.nordis-register-left img {
+  width: 72px;
+  margin-bottom: 18px;
 }
-.register-left img{
-    margin-top: 15%;
-    margin-bottom: 5%;
-    width: 25%;
-    -webkit-animation: mover 2s infinite  alternate;
-    animation: mover 1s infinite  alternate;
+.nordis-register-left h3 {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  text-align: center;
+  letter-spacing: 0.5px;
 }
-@-webkit-keyframes mover {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-20px); }
+.nordis-register-left p {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+  text-align: center;
 }
-@keyframes mover {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-20px); }
+.loginbtn {
+  background: #fff;
+  color: #0e5551;
+  font-weight: 700;
+  border: none;
+  border-radius: 20px;
+  padding: 13px 30px;
+  margin-top: 14px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background 0.18s, color 0.18s;
+  box-shadow: 0 4px 18px rgba(33,143,133,0.11);
 }
-.register-left p{
-    font-weight: lighter;
-    padding: 12%;
-    margin-top: -9%;
+.loginbtn:hover {
+  background: #48c5bf;
+  color: #fff;
 }
-.register .register-form{
-    padding: 10%;
-    margin-top: 10%;
+
+.nordis-register-right {
+  flex: 1;
+  padding: 48px 36px;
+  background: #f7fcfd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.btnRegister{
-    float: right;
-    margin-top: -1%;
-    margin-bottom: 3%;
-    margin-right: 34%;
-    border: none;
-    border-radius: 1.5rem;
-    padding: 1%;
-    border: 1px solid black;
-    color: #0a3d3b;
-    font-weight: 600;
-    font-size: 20px;
-    width: 30%;
-    cursor: pointer;
+
+.nordis-switch-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+  width: 100%;
+  justify-content: center;
 }
-.loginbtn
-{
-    float: right;
-    margin-top: 10%;
-    margin-right: 25%;
-    border: none;
-    border-radius: 1.5rem;
-    padding: 2%;
-    background: transparent;
-    color: #ffffff;
-    font-weight: bolder;
-    width: 50%;
-    cursor: pointer;
+.nordis-switch-tabs button {
+  border: none;
+  background: #eaf5f4;
+  color: #0e5551;
+  padding: 8px 38px;
+  font-size: 1rem;
+  border-radius: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
 }
-.loginbtn:hover{
-    cursor: pointer;
-    background: #ffffff;
-    color: #0a3d3b;
+.nordis-switch-tabs button.active,
+.nordis-switch-tabs button:hover {
+  background: #48c5bf;
+  color: #fff;
 }
-.btnRegister:hover{
-    background: #0a3d3b;
-    color: #fff;
-    cursor: pointer;
+
+.nordis-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+  color: #13635e;
+  text-align: left;
+  letter-spacing: 0.5px;
 }
-.register .nav-tabs{
-    margin-top: 3%;
-    border: none;
-    background: #11635f;
-    border-radius: 1.5rem;
-    width: 28%;
-    float: right;
+
+.nordis-fields-row {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 16px;
 }
-.register .nav-tabs .nav-link{
-    padding: 2%;
-    height: 34px;
-    font-weight: 600;
-    color: #fff;
-    border-top-right-radius: 1.5rem;
-    border-bottom-right-radius: 1.5rem;
+
+/* FIELD PAIR (GRID) */
+.nordis-field-row-pair {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  margin-bottom: 0px;
 }
-.register .nav-tabs .nav-link:hover{
-    border: none;
+
+/* Each input+error block */
+.input-block {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 74px; /* Adjust as needed so all blocks line up, input+error+spacing */
 }
-.register .nav-tabs .nav-link.active{
-    width: 100px;
-    color: #0062cc;
-    border: 2px solid #0062cc;
-    border-top-left-radius: 1.5rem;
-    border-bottom-left-radius: 1.5rem;
+
+.input-block input,
+.input-block .password-field {
+  width: 100%;
 }
-.highlight1, .highlight2{
-    width: 100px;
-    color: #fdfdfd;
-    background-color: #31e4c6;
-    border: 2px solid #0a5f51;
-    border-top-left-radius: 1.5rem;
-    border-bottom-left-radius: 1.5rem;
+
+/* Input styling */
+.input-block input,
+.input-block .password-field input {
+  border: 1.2px solid #b9e5e2;
+  border-radius: 16px;
+  padding: 12px 16px;
+  font-size: 1.04rem;
+  outline: none;
+  background: #fff;
+  transition: border-color 0.18s;
+  height: 48px;
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 2px;
 }
-.nav1:hover, .nav2:hover{
-    cursor: pointer;
+.input-block input:focus {
+  border-color: #48c5bf;
 }
-.register-heading{
-    text-align: center;
-    margin-top: 8%;
-    font-weight: bold;
-    font-size: 35px;
-    letter-spacing: 1.5px;
-    margin-bottom: -15%;
-    font-family: 'Aladin', cursive;
-    color: #413613;
+.input-block input[type="password"] {
+  padding-right: 40px;
 }
-#home-tab
-{
-    background-color: none;
+
+/* Password show/hide icon */
+.password-field {
+  position: relative;
+  width: 100%;
 }
-input{
-    margin-bottom: 4%;
-    border-radius: 10px;
+.password-field input {
+  padding-right: 40px !important;
+}
+.eye-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  height: 24px;
+  width: 24px;
+  display: flex;
+  align-items: center;
+}
+.eye-icon svg {
+  width: 22px;
+  height: 22px;
+  opacity: 0.65;
+  transition: opacity 0.14s;
+}
+.eye-icon:hover svg {
+  opacity: 1;
+}
+
+.nordis-error {
+  font-size: 0.97rem;
+  color: #da003a;
+  margin: 2px 0 6px 4px;
+  min-height: 18px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.nordis-checkbox {
+  display: flex;
+  align-items: center;
+  margin: 14px 0 0 0;
+  font-size: 1.05rem;
+  color: #555;
+}
+.nordis-checkbox input[type="checkbox"] {
+  margin-right: 9px;
+  accent-color: #48c5bf;
+  width: 18px;
+  height: 18px;
+}
+
+.nordis-btn {
+  width: 100%;
+  margin: 32px 0 0 0;
+  padding: 16px 0;
+  background: #48c5bf;
+  color: #fff;
+  font-size: 1.22rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 28px;
+  box-shadow: 0 4px 20px #48c5bf23;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+.nordis-btn:hover {
+  background: #0e5551;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1050px) {
+  .nordis-register-card-wide {
+    min-width: 95vw;
+    flex-direction: column;
+    min-height: unset;
+  }
+  .nordis-register-left, .nordis-register-right {
+    width: 100%;
+    min-width: 0;
+    padding: 32px 14px;
+    border-radius: 0;
+  }
+  .nordis-register-left {
+    border-radius: 32px 32px 0 0;
+  }
+}
+@media (max-width: 660px) {
+  .nordis-register-card-wide {
+    min-width: 0;
+    padding: 0;
+  }
+  .nordis-fields-row,
+  .nordis-field-row-pair {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .input-block {
+    min-height: 68px;
+  }
+}
+@media (max-width: 1050px) {
+  .nordis-register-card-wide {
+    min-width: 0;
+    width: 98vw;
+    flex-direction: column;
+    min-height: unset;
+    padding: 0 2vw;
+  }
+  .nordis-register-left, .nordis-register-right {
+    width: 100%;
+    min-width: 0;
+    padding: 32px 4vw;
+    border-radius: 0;
+    box-sizing: border-box;
+  }
+  .nordis-register-left {
+    border-radius: 32px 32px 0 0;
+  }
+}
+@media (max-width: 660px) {
+  .nordis-register-card-wide {
+    padding: 0;
+    width: 100vw;
+  }
+  .nordis-fields-row,
+  .nordis-field-row-pair {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .input-block {
+    min-height: 68px;
+  }
+  .nordis-register-left, .nordis-register-right {
+    padding: 24px 3vw;
+  }
 }
