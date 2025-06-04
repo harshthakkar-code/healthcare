@@ -152,7 +152,7 @@
   align-items: center;
   position: relative;
   transition: transform .18s, box-shadow .18s;
-  min-height: 440px;
+  min-height: 480px;
 }
 
 .nordis-doctor-card:hover {

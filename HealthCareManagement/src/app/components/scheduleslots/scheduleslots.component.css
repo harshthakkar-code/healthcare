@@ -1,192 +1,241 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Volkhov:ital,wght@1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Mate+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap');
 
-.container
-{
-    max-width: 700px;
-    padding: 40px 40px 25px 40px;
-    border-radius: 10px; 
-    box-shadow: 5px 5px 35px 8px rgb(147, 158, 147); 
-    background-color: white;
-    margin-top: 2%;
-    margin-bottom: 50px;
+body, .container, input, select, textarea, .registerbtn, .textual, label, th, td {
+  font-family: 'Montserrat', Arial, sans-serif !important;
 }
-input{
-    border-radius: 12px;
-    margin-top: 8px;
-}
-.textual
-{
-    color: rgb(77, 72, 14); 
-    text-align: center; 
-    margin-top: -20px;
-    font-family: 'Aladin', cursive;
-    padding: 5px;
-    font-weight: bolder;
-    font-size: 28px;
-    text-transform: uppercase;
-}
-label{
-    margin-top: 10px;
-    font-family: 'Volkhov', serif;
-    letter-spacing: 0px;
-    font-size: medium;
-}
-.registerbtn
-{
-    background-color: transparent;
-    padding-left: 8%;
-    padding-right: 8%;
-    margin: auto;  
-    padding-bottom: 7px;
-    border-radius: 15px;
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: black;
-    border: 1px solid black;
-}
-.registerbtn:hover
-{
-    background-color: rgb(23, 78, 78);
-    padding-left: 7%;
-    padding-right: 7%;
-    cursor: pointer;
-    color: white;
-}
-.logoutbtn{
-    border: none;
-    background:transparent;
-    color: rgb(18, 85, 57);
-    border-radius: 15px;
-    margin-left: 90%;
-    margin-top: 2%;
-    border: 1px solid black;
-    padding: 7px 10px 7px 10px;
-    font-size: small;
-  }
-  .logoutbtn:hover{
-    cursor: pointer;
-    background-color: #23ad9b;
-    color: white;
-    padding: 7px 8px 7px 8px;
-    border-radius: 15px;
-  }
 
-.panel-body{
-  margin-left: 1%;
-  margin-right: 2%;
-}
-thead{
-  background-color: rgb(17, 90, 85);;
-}
-table, td{
-  text-align: center;
-  align-items: center;
-  vertical-align: middle;
-}
-table, td, tr{
-  border: 1px solid rgb(163, 161, 161);
-  font-family: serif;
-  font-weight: bold;
-  font-style: normal;
-  font-size: large;
-}
-th{
-  text-transform: uppercase;
-  color: white;
-  font-family: Helvetica;
-  font-style: italic;
-  font-size: normal;
-}
-td{
-  text-transform:none;
-}
-.accepted{
-  border-radius: 10px;
-  background-color: rgb(30, 116, 30);
-  padding: 5px 10px 5px 10px;
-  color: white;
-  font-weight: bolder;
-}
-.pending{
-  border-radius: 10px;
-  background-color: rgb(196, 137, 28);
-  padding: 5px 10px 5px 10px;
-  color: white;
-  font-weight: bolder;
-}
-.noslot
-{
-  border-radius: 10px;
-  background-color: rgb(128, 26, 26);
-  padding: 5px 10px 5px 10px;
-  color: white;
-  font-weight: bolder;
-}
-.date-cover{
-  border-radius: 10px;
-  background-color: rgb(10, 15, 68);
-  padding: 5px 10px 5px 10px;
-  color: white;
-  font-weight: bolder;
-}
-table{
-  margin-left: 35%;
-  margin-top: -20%;
-}
-.img-block{
-  width: 40%;
-  height: 180px;
-  border-top-left-radius: 15px;
-  border-bottom-left-radius: 15px;
-  background-color: rgb(17, 90, 85);
-}
-.circle{
-  background-color: rgb(253, 255, 138);
-  margin-left: auto;
-  margin-right: auto;
-  align-content: center;
-  margin-top: 10%;
-  margin-bottom: auto;
-  border-radius: 50%;
-  width: 90%;
-  height: 80%;
-}
-.bloodimg
-{
-    margin-left: 13%;
-    margin-top: 8%;
-}
-.card
-{
-  width: 30%;
-  margin-left: 2%;
-  margin-right: 3%;
-  border-radius: 15px;
-  box-shadow: 5px 5px 25px 8px rgb(147, 158, 147);
-  border: 1px solid black;
-}
-.text
-{
-  color: maroon;
-  font-weight: bold;
-  font-size: 18px;
-  font-family: serif;
-}
-.card-block{
-  margin-left: 46%;
-  margin-top: -43%;
-}
-.add-slot-btn
-{
-  background-color: darkgreen;
-  padding: 5px 20px 5px 20px;
+.container {
+  max-width: 760px;
+  margin: 48px auto 64px auto;
+  padding: 40px 32px 28px 32px;
+  background: #f8fdff;
+  border-radius: 28px;
+  box-shadow: 0 8px 32px 0 rgba(62, 194, 184, 0.10);
   border: none;
-  margin-top: 3%;
-  margin-left: 14%;
-  border-radius: 15px;
+}
+
+.textual {
+  color: darkgreen !important;
+  text-align: center;
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  margin-bottom: 12px;
+  margin-top: -20px;
+  letter-spacing: 0.5px;
+  text-transform: none;
+}
+
+.form-group {
+  margin-bottom: 22px;
+}
+
+label {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #295060;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+input.form-control,
+select.form-control,
+textarea.form-control {
+  background: #ecf8fb !important;
+  border: none !important;
+  border-radius: 14px !important;
+  padding: 7px 16px !important;
+  font-size: 1.08rem;
+  color: #2a3d4a;
+  box-shadow: 0 1.5px 6px rgba(60, 194, 184, 0.04);
+  margin-top: 7px;
+  margin-bottom: 4px;
+  outline: none !important;
+  transition: box-shadow 0.17s, background 0.15s;
+}
+
+input.form-control:focus,
+select.form-control:focus,
+textarea.form-control:focus {
+  background: #e1f5fa !important;
+  box-shadow: 0 0 0 2.5px #87c8e4 !important;
+}
+
+input.is-invalid, select.is-invalid, textarea.is-invalid {
+  box-shadow: 0 0 0 2.5px #fa9191 !important;
+  background: #fff5f5 !important;
+}
+
+small.text-danger {
+  color: #ed3c50 !important;
+  font-size: 0.96rem;
+  margin-top: 1.5px;
+}
+
+.btn.registerbtn {
+  background: linear-gradient(90deg, #3dc2b8 0%, #62e0e3 100%);
+  color: #000 !important;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  padding: 13px 0;
+  border-radius: 23px;
+  margin-top: 16px;
+  width: 100%;
+  box-shadow: 0 4px 16px 0 rgba(62,194,184,0.14);
+  transition: background 0.16s, color 0.13s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 0.5px;
+}
+
+.btn.registerbtn:hover {
+  background: #22b6a4 !important;
+  color: #fff !important;
+}
+
+.slot-card-block img {
+  border-radius: 50%;
+  border: 4px solid #fff;
+  background: #e1f5fa;
+  box-shadow: 0 1px 4px #3dc2b8;
+}
+
+.doctor-info-block {
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 16px;
+  font-size: 1.02rem;
+}
+
+.table th {
+  background: #3dc2b8;
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  padding: 8px;
+  font-size: 1rem;
+  border-radius: 12px 12px 0 0;
+}
+
+.table td {
+  text-align: center;
+  padding: 10px;
+  background: #f8fdff;
+  border-bottom: 1.5px solid #d5eeea;
+}
+
+.accepted {
+  border-radius: 10px;
+  background-color: #1e741e;
+  padding: 5px 10px;
   color: white;
+  font-weight: 700;
+}
+
+.pending {
+  border-radius: 10px;
+  background-color: #c4891c;
+  padding: 5px 10px;
+  color: white;
+  font-weight: 700;
+}
+
+.noslot {
+  border-radius: 10px;
+  background-color: #801a1a;
+  padding: 5px 10px;
+  color: white;
+  font-weight: 700;
+}
+
+.date-cover {
+  border-radius: 10px;
+  background-color: #0a0f44;
+  padding: 5px 10px;
+  color: white;
+  font-weight: 700;
+  display: inline-block;
+}
+
+@media (max-width: 540px) {
+  .container {
+    padding: 24px 8px;
+    margin: 0 4px;
+  }
+  .table, .table th, .table td {
+    font-size: 0.91rem;
+    padding: 4px;
+  }
+  .slot-card-block {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+.slot-table {
+  width: 100%;
+  border-collapse: separate; /* KEY: Use 'separate' for border radius */
+  border-spacing: 0;
+  margin-top: 10px;
+  background: #fff;
+  font-size: 1rem;
+  box-shadow: 0 4px 24px 0 rgba(62, 194, 184, 0.08);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.slot-table th,
+.slot-table td {
+  border: 1px solid #e3e9ed;
+  text-align: center;
+  padding: 16px 10px;
+}
+
+.slot-table th {
+  background: #3dc2b8;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.03em;
+}
+
+.slot-table td {
+  background: #f8fdff;
+  color: #2a3d4a;
+  font-weight: 500;
+}
+
+/* --- ROUNDED CORNERS --- */
+.slot-table th:first-child {
+  border-top-left-radius: 14px;
+}
+.slot-table th:last-child {
+  border-top-right-radius: 14px;
+}
+.slot-table tr:last-child td:first-child {
+  border-bottom-left-radius: 14px;
+}
+.slot-table tr:last-child td:last-child {
+  border-bottom-right-radius: 14px;
+}
+
+/* Remove this if present */
+.slot-table tr:last-child td {
+  /* border-bottom: none; */  /* <--- REMOVE THIS! */
+}
+
+/* Optionally, fix double border collapse in Chrome/Firefox */
+.slot-table {
+  border: 1px solid #e3e9ed;
+}
+
+/* Remove bottom shadow for a cleaner look if you wish */
+.slot-table {
+  box-shadow: 0 2px 8px 0 rgba(62, 194, 184, 0.07);
 }

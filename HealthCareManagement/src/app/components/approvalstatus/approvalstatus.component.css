@@ -123,3 +123,115 @@ label{
     cursor: pointer;
     color: white;
 }
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap');
+
+.approval-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 10px;
+  background: #fff;
+  font-size: 1rem;
+  box-shadow: 0 4px 24px 0 rgba(62, 194, 184, 0.10);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.approval-table th, .approval-table td {
+  border: 1px solid #e3e9ed;
+  text-align: center;
+  padding: 16px 10px;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1.03rem;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.approval-table th {
+  background: #3dc2b8;
+  color: #fff;
+  font-size: 1.08rem;
+  font-weight: 600;
+}
+
+.approval-table td {
+  background: #f8fdff;
+  color: #2a3d4a;
+}
+
+.approval-table tr:nth-child(even) td {
+  background: #ecf8fb;
+}
+
+.approval-table th:first-child {
+  border-top-left-radius: 14px;
+}
+.approval-table th:last-child {
+  border-top-right-radius: 14px;
+}
+.approval-table tr:last-child td:first-child {
+  border-bottom-left-radius: 14px;
+}
+.approval-table tr:last-child td:last-child {
+  border-bottom-right-radius: 14px;
+}
+
+.bloodimg {
+  border-radius: 50%;
+  border: 2px solid #e3e9ed;
+  background: #e1f5fa;
+  width: 48px !important;
+  height: 48px !important;
+  object-fit: cover;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 1rem;
+  padding: 5px 14px;
+  border-radius: 8px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 2px;
+}
+.accepted { background: #24b05a; }
+.pending { background: #c4891c; }
+.rejected { background: #ed3c50; }
+
+.no-data-msg {
+  text-align: center;
+  color: #b92c2c;
+  font-weight: bold;
+  font-size: 1.1rem;
+  background: #ecf8fb;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+
+@media (max-width: 900px) {
+  .approval-table th, .approval-table td {
+    padding: 7px 2px;
+    font-size: 0.95rem;
+  }
+  .bloodimg {
+    width: 30px !important;
+    height: 30px !important;
+  }
+}
+.approval-status-heading {
+  text-align: center;
+  color: #138b13;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  padding: 32px 0 24px 0;   /* Top and bottom padding */
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+.approval-status-heading small {
+  color: #206f20;
+  font-size: 1.09rem;
+  font-weight: 600;
+}
+

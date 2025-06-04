@@ -14,30 +14,34 @@ export class ScheduleslotsComponent implements OnInit {
   currRole = '';
   loggedUser = '';
   slot = new Slots();
-  slots : Observable<Slots[]> | undefined;
-  
-  constructor(private _service : DoctorService, private _router : Router) { }
+  slots: Observable<Slots[]> | undefined;
 
-  ngOnInit(): void 
-  {
-    $("#slotform").hide();
+  // Control Add Slot Form visibility
+  showAddSlotForm = false;
 
-    $(".add-slot-btn").click(function(){
-      $("#slotform").show();
-      $("#slot-preview").hide();
-    });
+  constructor(private _service: DoctorService, private _router: Router) { }
 
-    this.loggedUser = JSON.stringify(sessionStorage.getItem('loggedUser')|| '{}');
+  ngOnInit(): void {
+    // Remove jQuery usage
+
+    this.loggedUser = JSON.stringify(sessionStorage.getItem('loggedUser') || '{}');
     this.loggedUser = this.loggedUser.replace(/"/g, '');
 
-    this.currRole = JSON.stringify(sessionStorage.getItem('ROLE')|| '{}'); 
+    this.currRole = JSON.stringify(sessionStorage.getItem('ROLE') || '{}');
     this.currRole = this.currRole.replace(/"/g, '');
 
     this.slots = this._service.getSlotDetails(this.loggedUser);
   }
 
-  addSlot()
-  {
+  openAddSlotForm() {
+    this.showAddSlotForm = true;
+  }
+
+  closeAddSlotForm() {
+    this.showAddSlotForm = false;
+  }
+
+  addSlot() {
     this._service.addBookingSlots(this.slot).subscribe(
       data => {
         console.log("Slots added Successfully");
@@ -48,6 +52,7 @@ export class ScheduleslotsComponent implements OnInit {
         console.log(error.error);
       }
     )
+    // Optionally auto-close form:
+    // this.showAddSlotForm = false;
   }
-
 }
