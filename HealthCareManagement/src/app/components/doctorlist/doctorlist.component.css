@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Aladin&family=Merienda+One&family=Staatliches&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Aladin&family=Merienda+One&family=Staatliches&display=swap');
 
 .row
   {
@@ -109,4 +109,171 @@
     letter-spacing: 1px;
     margin-left: 32%;
     margin-bottom: 1%;
+} */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;500;400&family=Aladin&display=swap');
+
+.nordis-page-heading {
+  font-family: 'Aladin', cursive;
+  font-size: 2.2rem;
+  color: #14645c;
+  letter-spacing: 1px;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 28px;
+  margin-bottom: 8px;
+}
+
+.nordis-page-subheading {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1.13rem;
+  color: #32b7ae;
+  font-weight: 600;
+  text-align: center;
+  display: block;
+  margin-bottom: 28px;
+}
+
+.nordis-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(310px, 1fr));
+  gap: 32px;
+  padding: 16px 6vw 24px 6vw;
+}
+
+.nordis-doctor-card {
+  background: #fafdfe;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(62,194,184,0.09), 0 1.5px 6px rgba(62,194,184,0.04);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: transform .18s, box-shadow .18s;
+  min-height: 440px;
+}
+
+.nordis-doctor-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 10px 32px rgba(62,194,184,0.16);
+}
+
+.nordis-doctor-image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.nordis-doctor-avatar {
+  background: linear-gradient(120deg, #3dc2b8 0%, #62e0e3 100%);
+  border-radius: 50%;
+  width: 98px;
+  height: 98px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(62,194,184,0.12);
+}
+.nordis-doctor-avatar img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.nordis-doctor-details {
+  display: grid;
+  grid-template-columns: 130px 1fr;  /* fixed label, flexible value */
+  row-gap: 18px;
+  column-gap: 8px;
+  width: 100%;
+  padding: 18px 26px 10px 26px;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1.1rem;
+}
+.nordis-doc-name {
+  font-family: 'Montserrat', Arial, sans-serif;
+  color: #3dc2b8;
+  font-weight: 700;
+  font-size: 1.18rem;
+  margin-bottom: 4px;
+}
+
+.nordis-doc-info {
+  font-family: 'Montserrat', Arial, sans-serif;
+  color: #295060;
+  font-size: 1.04rem;
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+.nordis-doc-contact {
+  font-family: 'Montserrat', Arial, sans-serif;
+  color: #2a757b;
+  font-size: 1.01rem;
+  font-weight: 400;
+  margin-bottom: 2px;
+}
+
+.nordis-doc-status {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1.04rem;
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 7px 28px;
+  text-align: center;
+  min-width: 160px;
+  letter-spacing: 0.3px;
+  box-shadow: 0 1.5px 6px rgba(62,194,184,0.08);
+}
+.nordis-doc-status.approved { background: #43ce8e; color: #fff; }
+.nordis-doc-status.pending { background: #ffc75d; color: #6d4400; }
+.nordis-doc-status.rejected { background: #e85a6a; color: #fff; }
+
+/* Responsive tweaks */
+@media (max-width: 700px) {
+  .nordis-grid {
+    grid-template-columns: 1fr;
+    padding: 16px 2vw 24px 2vw;
+  }
+  .nordis-doctor-card { min-height: 340px; }
+}
+
+
+.nordis-doctor-details {
+  display: grid;
+  grid-template-columns: 130px 1fr;  /* label fixed, value flexible */
+  row-gap: 14px;
+  column-gap: 8px;
+  width: 100%;
+  padding: 18px 26px 10px 26px;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1.1rem;
+}
+
+/* .nordis-detail-row {
+  display: flex; /* grid children, not a wrapper */
+/* } */ */
+
+.nordis-label {
+  color: #9fc0bd;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  font-size: 1.08rem;
+  text-align: right;
+  /* No extra margin needed */
+}
+.nordis-value {
+  color: #18667a;
+  font-weight: 700;
+  text-align: left;
+  font-size: 1.08rem;
+  word-break: break-word;
 }
