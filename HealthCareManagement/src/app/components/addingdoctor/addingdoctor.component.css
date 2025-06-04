@@ -1,76 +1,153 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Volkhov:ital,wght@1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Mate+SC&display=swap');
+body, html {
+  margin: 0;
+  padding: 0;
+  background: #f6fcfe;
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden !important; /* Prevent horizontal scroll */
+}
 
-.container
-{
-    max-width: 700px;
-    padding: 40px 40px 25px 40px;
-    border-radius: 10px; 
-    box-shadow: 5px 5px 35px 8px rgb(147, 158, 147); 
-    background-color: white;
-    margin-top: 2%;
-    margin-bottom: 50px;
+.doctor-bg {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-input{
-    border-radius: 12px;
-    margin-top: 8px;
+
+.doctor-card {
+  background: #fff;
+  max-width: 680px;
+  width: 95vw;
+  margin: 40px 0;
+  padding: 38px 30px 28px 30px;
+  border-radius: 22px;
+  box-shadow: 0 6px 38px 0 rgba(32, 40, 58, 0.10), 0 2px 6px rgba(80, 190, 190, 0.07);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.textual
-{
-    color: rgb(77, 72, 14); 
-    text-align: center; 
-    margin-top: -20px;
-    font-family: 'Aladin', cursive;
-    padding: 5px;
-    font-weight: bolder;
-    font-size: 28px;
-    text-transform: uppercase;
+
+.doctor-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0e8681;
+  margin-bottom: 8px;
+  text-align: center;
 }
-label{
-    margin-top: 10px;
-    font-family: 'Volkhov', serif;
-    letter-spacing: 0px;
-    font-size: medium;
+.doctor-title i {
+  color: #16b6a6;
+  margin-right: 8px;
 }
-.registerbtn
-{
-    background-color: transparent;
-    padding-left: 8%;
-    padding-right: 8%;
-    margin: auto;  
-    padding-bottom: 7px;
-    border-radius: 15px;
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: black;
-    border: 1px solid black;
+
+.doctor-subinfo {
+  color: #be1a1a;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 24px;
+  text-align: center;
 }
-.registerbtn:hover
-{
-    background-color: rgb(23, 78, 78);
-    padding-left: 7%;
-    padding-right: 7%;
-    cursor: pointer;
-    color: white;
+
+form {
+  width: 100%;
 }
-.logoutbtn{
-    border: none;
-    background:transparent;
-    color: rgb(18, 85, 57);
-    border-radius: 15px;
-    margin-left: 90%;
-    margin-top: 2%;
-    border: 1px solid black;
-    padding: 7px 10px 7px 10px;
-    font-size: small;
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 17px;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #2b6d77;
+  font-size: 1.03rem;
+  margin-bottom: 4px;
+}
+
+.form-group input,
+.form-group select {
+  padding: 13px 16px;
+  border-radius: 13px;
+  border: 1.2px solid #b7e4e7;
+  font-size: 1rem;
+  background: #eaf8fb;
+  margin-bottom: 0;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #3dc2b8;
+}
+
+.doctor-error {
+  min-height: 20px;
+  color: #de0046;
+  font-size: 0.75rem;
+  margin: 3px 0 0 2px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.password-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-field input {
+  width: 100%;
+  padding-right: 40px !important;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.form-group-checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 1.07rem;
+}
+
+.doctor-btn {
+  width: 100%;
+  background: #eaf8fb;
+  color: #89bab5;
+  font-size: 1.13rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 16px;
+  padding: 14px 0;
+  margin-top: 14px;
+  box-shadow: 0 2px 18px 0 #3dc2b813;
+  cursor: pointer;
+  transition: background 0.16s, color 0.16s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.doctor-btn:enabled {
+  background: #16b6a6;
+  color: #fff;
+}
+.doctor-btn:disabled {
+  background: #eaf8fb;
+  color: #b9c3ca;
+  cursor: not-allowed;
+}
+
+@media (max-width: 540px) {
+  .doctor-card {
+    padding: 16px 6vw 16px 6vw;
+    min-width: 0;
   }
-  .logoutbtn:hover{
-    cursor: pointer;
-    background-color: #23ad9b;
-    color: white;
-    padding: 7px 8px 7px 8px;
-    border-radius: 15px;
-  }
+}

@@ -30,6 +30,9 @@ import { AddprescriptionComponent } from './components/addprescription/addprescr
 import { PrescriptionlistComponent } from './components/prescriptionlist/prescriptionlist.component';
 import { WelcomepageComponent } from './components/welcomepage/welcomepage.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -64,6 +67,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FormsModule,
     HttpClientModule,
     NgxPaginationModule,
+    BrowserAnimationsModule, // Import BrowserAnimationsModule for Angular Material animations
+    MatSnackBarModule, // Import MatSnackBarModule for Angular Material Snackbar
     MDBBootstrapModule.forRoot()
   ],
   providers: [],
