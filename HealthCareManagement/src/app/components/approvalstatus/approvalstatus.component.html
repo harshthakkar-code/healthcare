@@ -18,20 +18,21 @@
 
 <div class="panel panel-primary" id="doctorapproval">
   <div class="panel-heading">
-    <h2 class="textual" style="color: maroon;">
-      Your approval status
-      <div *ngFor="let doctor of approval | async">
-        <div *ngIf="doctor.status === 'accept'">
-          <h2><small style="color: green;">(Verified & Accepted)</small></h2>
-        </div>
-        <div *ngIf="doctor.status === 'false'">
-          <h2><small style="color: rgb(161, 106, 34);">(Not yet Verified)</small></h2>
-        </div>
-        <div *ngIf="doctor.status === 'reject'">
-          <h2><small style="color: rgb(184, 36, 36);">(Verified & Rejected)</small></h2>
-        </div>
-      </div>
-    </h2>
+  <h2 class="approval-status-heading" style="color: maroon;">
+  Your approval status
+</h2>
+<div class="approval-status-subtext" *ngFor="let doctor of approval | async">
+  <ng-container *ngIf="doctor.status === 'accept'">
+    <span class="status-success">(Verified & Accepted)</span>
+  </ng-container>
+  <ng-container *ngIf="doctor.status === 'false'">
+    <span class="status-pending">(Not yet Verified)</span>
+  </ng-container>
+  <ng-container *ngIf="doctor.status === 'reject'">
+    <span class="status-rejected">(Verified & Rejected)</span>
+  </ng-container>
+</div>
+
   </div>
   <div class="panel-body">
     <table class="approval-table">

@@ -66,12 +66,37 @@
   
         <div class="form-group">
           <label for="pwd">Password: <b class="text-danger">*</b></label>
-          <input type="password" class="form-control" placeholder="enter password" value="user.password" name="pwd" [(ngModel)]="user.password" required
-          #password="ngModel"
-          [class.is-invalid]="password.invalid && password.touched"> 
-        </div>
+           <div class="password-field">
+        <input [type]="showPassword ? 'text' : 'password'"
+               id="pwd"
+               name="pwd"
+               class="form-control"
+               [(ngModel)]="user.password"
+               required
+               #pwd="ngModel"
+               [class.is-invalid]="pwd.invalid && pwd.touched"
+               placeholder="Enter new password">
+        <span class="eye-icon" (click)="showPassword = !showPassword">
+          <svg *ngIf="!showPassword" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <ellipse cx="12" cy="12" rx="9" ry="6" stroke="#aaa" stroke-width="2"/>
+            <line x1="4" y1="20" x2="20" y2="4" stroke="#aaa" stroke-width="2"/>
+          </svg>
+          <svg *ngIf="showPassword" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <ellipse cx="12" cy="12" rx="9" ry="6" stroke="#3dc2b8" stroke-width="2"/>
+            <circle cx="12" cy="12" r="2.5" fill="#3dc2b8"/>
+          </svg>
+        </span>
+      </div>
+      <small class="text-danger" *ngIf="pwd.errors?.required && pwd.touched">
+        Password is required.
+      </small>
+      </div>
   
-        <button [disabled]="Updateform.form.invalid" type="submit" class="btn registerbtn">Update</button>
+    <button [disabled]="Updateform.form.invalid"
+            type="submit"
+            class="btn registerbtn">
+      <i class="fa fa-save"></i>&nbsp; Save Profile
+    </button>
       </form>
     </div>
   

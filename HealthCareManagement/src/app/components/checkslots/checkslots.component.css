@@ -1,63 +1,81 @@
-@import url('https://fonts.googleapis.com/css2?family=Mate+SC&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap');
 
-.panel-body{
-  margin-left: 1%;
-  margin-right: 2%;
-}
-thead{
-  background-color: rgb(67, 97, 20);
-}
-table, td{
+.approval-status-heading {
   text-align: center;
-  align-items: center;
-  vertical-align: middle;
-}
-table, td, tr{
-  border: 1px solid rgb(163, 161, 161);
-  font-family: serif;
-  font-weight: bold;
-  font-style: normal;
-  font-size: large;
+  color: #138b13;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  padding: 32px 0 24px 0;
+  margin: 0;
+  letter-spacing: 0.5px;
 }
 
-th{
-  text-transform: uppercase;
-  color: white;
-  font-family: Helvetica;
-  font-style: italic;
-  font-size: normal;
+.approval-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 10px;
+  background: #fff;
+  font-size: 1rem;
+  box-shadow: 0 4px 24px 0 rgba(62, 194, 184, 0.10);
+  border-radius: 18px;
+  overflow: hidden;
 }
-td{
-  text-transform:none;
+
+.approval-table th, .approval-table td {
+  border: 1px solid #e3e9ed;
+  text-align: center;
+  padding: 16px 10px;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1.03rem;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: normal;
 }
-.accepted{
-  border: 1px solid black;
-  border-radius: 10px;
-  background-color: rgb(30, 116, 30);
-  padding: 5px 10px 5px 10px;
-  color: white;
-  font-weight: bolder;
+
+.approval-table th {
+  background: #3dc2b8;
+  color: #fff;
+  font-size: 1.08rem;
+  font-weight: 600;
 }
-.pending{
-  border-radius: 10px;
-  background-color: rgb(196, 137, 28);
-  padding: 5px 10px 5px 10px;
-  color: white;
-  font-weight: bolder;
+
+.approval-table td {
+  background: #f8fdff;
+  color: #2a3d4a;
 }
-.datecover{
-  border-radius: 10px;
-  background-color: rgb(10, 15, 68);
-  padding: 5px 10px 5px 10px;
-  color: white;
-  font-weight: bolder;
+
+.approval-table tr:nth-child(even) td {
+  background: #ecf8fb;
 }
-.noslot
-{
-  border-radius: 10px;
-  background-color: rgb(128, 26, 26);
-  padding: 5px 10px 5px 10px;
-  color: white;
-  font-weight: bolder;
+
+.approval-table th:first-child {
+  border-top-left-radius: 14px;
+}
+.approval-table th:last-child {
+  border-top-right-radius: 14px;
+}
+.approval-table tr:last-child td:first-child {
+  border-bottom-left-radius: 14px;
+}
+.approval-table tr:last-child td:last-child {
+  border-bottom-right-radius: 14px;
+}
+
+.no-data-msg {
+  text-align: center;
+  color: #b92c2c;
+  font-weight: bold;
+  font-size: 1.1rem;
+  background: #ecf8fb;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+
+@media (max-width: 900px) {
+  .approval-table th, .approval-table td {
+    padding: 7px 2px;
+    font-size: 0.95rem;
+  }
 }

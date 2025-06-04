@@ -19,6 +19,8 @@ export class UserprofileComponent implements OnInit {
   currRole = '';
   loggedUser = '';
   temp = false;
+  showPassword = false;
+
 
   constructor(private _service: UserService, private activatedRoute: ActivatedRoute, private _router : Router) { }
 
