@@ -4,6 +4,20 @@
 
 ### For more such developments, visit my [Portfolio](https://gowthamrajk.github.io)
 
+
+## for Run 
+
+- Frontend 
+1. set NODE_OPTIONS=--openssl-legacy-provider
+2. ng serve
+
+- Backend 
+
+1. Run Apache
+2. Run Mysql
+3. mvn clean install // If needed 
+4. mvn spring-boot:run
+
 ##  Features 💬
 
 - It is a **HealthCare Management System** which can facilitate you to check your hospital status, profile information, doctor information, check slots, book doctor appointments, review the appointments, generate and print your respective prescriptions and manage the entire application.
