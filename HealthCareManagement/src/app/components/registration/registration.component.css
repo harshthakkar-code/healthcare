@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap');
+
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Prevent accidental horizontal scroll */
+  overflow-x: hidden;
+  font-family: 'Montserrat', Arial, sans-serif;
 }
 
 .nordis-register-bg {
@@ -13,9 +16,9 @@ html, body {
   align-items: center;
   justify-content: center;
   background: #fff;
-  overflow-x: hidden; /* Prevent accidental horizontal scroll */
+  overflow-x: hidden;
   box-sizing: border-box;
-  padding: 2vw; /* Responsive horizontal padding */
+  padding: 2vw;
 }
 
 .nordis-register-card-wide {
@@ -23,50 +26,49 @@ html, body {
   flex-direction: row;
   width: 100%;
   max-width: 980px;
-  min-width: 0;              /* KEY: Let it shrink */
+  min-width: 0;
   min-height: 650px;
   max-height: 760px;
   background: #fff;
-  border-radius: 32px;
-  box-shadow: 0 8px 48px rgba(33,143,133,0.13);
+  border-radius: 30px;
+  box-shadow: 0 12px 32px rgba(32, 40, 58, 0.08);
   overflow: hidden;
   box-sizing: border-box;
-  padding: 0 2vw;            /* Responsive padding inside card */
+  padding: 0 0;
 }
 
-
 .nordis-register-left {
-  background: linear-gradient(135deg, #0e5551 60%, #48c5bf 100%);
+  background: linear-gradient(120deg, #3dc2b8 0%, #62e0e3 100%);
   color: #fff;
-  padding: 0 40px;
-  width: 340px;
+  padding: 0 38px;
+  width: 320px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border-radius: 30px 0 0 30px;
 }
 
 .nordis-register-left img {
-  width: 72px;
-  margin-bottom: 18px;
+  width: 80px;
+  margin-bottom: 28px;
 }
 .nordis-register-left h3 {
-  font-family: 'Montserrat', Arial, sans-serif;
   font-weight: 700;
-  font-size: 1.2rem;
-  margin-bottom: 12px;
+  font-size: 1.22rem;
+  margin-bottom: 14px;
   text-align: center;
   letter-spacing: 0.5px;
 }
 .nordis-register-left p {
   font-size: 1rem;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   letter-spacing: 0.5px;
   text-align: center;
 }
 .loginbtn {
   background: #fff;
-  color: #0e5551;
+  color: #3dc2b8;
   font-weight: 700;
   border: none;
   border-radius: 20px;
@@ -75,22 +77,25 @@ html, body {
   cursor: pointer;
   font-size: 1.1rem;
   transition: background 0.18s, color 0.18s;
-  box-shadow: 0 4px 18px rgba(33,143,133,0.11);
+  box-shadow: 0 2px 10px rgba(62,194,184,0.07);
 }
 .loginbtn:hover {
-  background: #48c5bf;
+  background: #3dc2b8;
   color: #fff;
 }
 
+/* Right Panel */
 .nordis-register-right {
   flex: 1;
   padding: 48px 36px;
-  background: #f7fcfd;
+  background: #f8fdff;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border-radius: 0 30px 30px 0;
 }
 
+/* Tabs */
 .nordis-switch-tabs {
   display: flex;
   gap: 10px;
@@ -100,30 +105,25 @@ html, body {
 }
 .nordis-switch-tabs button {
   border: none;
-  background: #eaf5f4;
-  color: #0e5551;
+  background: #ecf8fb;
+  color: #1d3148;
   padding: 8px 38px;
   font-size: 1rem;
-  border-radius: 18px;
+  border-radius: 22px;
   font-weight: 700;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
+  opacity: 0.7;
+  margin-bottom: 8px;
 }
 .nordis-switch-tabs button.active,
 .nordis-switch-tabs button:hover {
-  background: #48c5bf;
+  background: #7fd8e7;
   color: #fff;
+  opacity: 1;
 }
 
-.nordis-title {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 32px;
-  color: #13635e;
-  text-align: left;
-  letter-spacing: 0.5px;
-}
-
+/* Form layout (pair grid) */
 .nordis-fields-row {
   width: 100%;
   display: flex;
@@ -131,52 +131,47 @@ html, body {
   gap: 0;
   margin-bottom: 16px;
 }
-
-/* FIELD PAIR (GRID) */
 .nordis-field-row-pair {
   display: flex;
   flex-direction: row;
   gap: 18px;
   margin-bottom: 0px;
 }
-
-/* Each input+error block */
 .input-block {
   flex: 1 1 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  min-height: 74px; /* Adjust as needed so all blocks line up, input+error+spacing */
+  min-height: 74px;
 }
-
 .input-block input,
 .input-block .password-field {
   width: 100%;
 }
 
-/* Input styling */
+/* Inputs: soft blue, no border */
 .input-block input,
 .input-block .password-field input {
-  border: 1.2px solid #b9e5e2;
-  border-radius: 16px;
-  padding: 12px 16px;
-  font-size: 1.04rem;
+  background: #ecf8fb;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 1rem;
+  color: #272e3a;
   outline: none;
-  background: #fff;
-  transition: border-color 0.18s;
+  box-shadow: none;
+  transition: box-shadow 0.2s;
   height: 48px;
-  box-sizing: border-box;
-  width: 100%;
   margin-bottom: 2px;
 }
 .input-block input:focus {
-  border-color: #48c5bf;
+  box-shadow: 0 0 0 2px #87c8e4;
+  background: #e6f4fa;
 }
 .input-block input[type="password"] {
   padding-right: 40px;
 }
 
-/* Password show/hide icon */
 .password-field {
   position: relative;
   width: 100%;
@@ -205,15 +200,17 @@ html, body {
   opacity: 1;
 }
 
+/* Error Message */
 .nordis-error {
-  font-size: 0.97rem;
-  color: #da003a;
+  font-size: 0.75rem;
+  color: #ed3c50;
   margin: 2px 0 6px 4px;
   min-height: 18px;
   font-weight: 500;
   line-height: 1.3;
 }
 
+/* Checkbox */
 .nordis-checkbox {
   display: flex;
   align-items: center;
@@ -223,60 +220,37 @@ html, body {
 }
 .nordis-checkbox input[type="checkbox"] {
   margin-right: 9px;
-  accent-color: #48c5bf;
+  accent-color: #3dc2b8;
   width: 18px;
   height: 18px;
 }
 
+/* Register Button */
 .nordis-btn {
   width: 100%;
   margin: 32px 0 0 0;
   padding: 16px 0;
-  background: #48c5bf;
+  background: #76c8d7;
   color: #fff;
   font-size: 1.22rem;
   font-weight: 700;
   border: none;
-  border-radius: 28px;
-  box-shadow: 0 4px 20px #48c5bf23;
+  border-radius: 24px;
+  box-shadow: 0 3px 18px 0 rgba(118,200,215,0.12);
   cursor: pointer;
-  transition: background 0.18s;
+  transition: background 0.2s, color 0.2s;
 }
-.nordis-btn:hover {
-  background: #0e5551;
+.nordis-btn:disabled {
+  background: #d1ecf5;
+  color: #b3bcc5;
+  cursor: not-allowed;
+}
+.nordis-btn:hover:not(:disabled) {
+  background: #45b2c3;
+  color: #fff;
 }
 
-/* Responsive adjustments */
-@media (max-width: 1050px) {
-  .nordis-register-card-wide {
-    min-width: 95vw;
-    flex-direction: column;
-    min-height: unset;
-  }
-  .nordis-register-left, .nordis-register-right {
-    width: 100%;
-    min-width: 0;
-    padding: 32px 14px;
-    border-radius: 0;
-  }
-  .nordis-register-left {
-    border-radius: 32px 32px 0 0;
-  }
-}
-@media (max-width: 660px) {
-  .nordis-register-card-wide {
-    min-width: 0;
-    padding: 0;
-  }
-  .nordis-fields-row,
-  .nordis-field-row-pair {
-    flex-direction: column;
-    gap: 8px;
-  }
-  .input-block {
-    min-height: 68px;
-  }
-}
+/* Responsive */
 @media (max-width: 1050px) {
   .nordis-register-card-wide {
     min-width: 0;
@@ -293,7 +267,7 @@ html, body {
     box-sizing: border-box;
   }
   .nordis-register-left {
-    border-radius: 32px 32px 0 0;
+    border-radius: 30px 30px 0 0;
   }
 }
 @media (max-width: 660px) {

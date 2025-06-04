@@ -17,59 +17,57 @@ export class LoginComponent implements OnInit {
   adminEmail = "admin@gmail.com";
   adminPassword = "admin123";
   selectedTab: 'user' | 'doctor' | 'admin' = 'user';  // Default tab
+  showUserPassword = false;
+  showDoctorPassword = false;
+  showAdminPassword = false;
 
 
-  constructor(private _service : LoginService, private _router : Router) { }
+  constructor(private _service: LoginService, private _router: Router) { }
 
-  ngOnInit(): void 
-  {
+  ngOnInit(): void {
   }
 
-  loginUser()
-  {
-      this._service.loginUserFromRemote(this.user).subscribe(
-        (data: any) => {
-          console.log(data);
-          console.log("Response Received");
-          sessionStorage.setItem('loggedUser', this.user.email);
-          sessionStorage.setItem('USER', "user");
-          sessionStorage.setItem('ROLE', "user");
-          sessionStorage.setItem('name', this.user.email);
-          sessionStorage.setItem('gender', "male");
-          this._router.navigate(['/userdashboard']);
-        },
-        (error: { error: any; }) => {
-          console.log(error.error);
-          this.msg="Bad credentials, please enter valid credentials !!!";
-        }
-      )
+  loginUser() {
+    this._service.loginUserFromRemote(this.user).subscribe(
+      (data: any) => {
+        console.log(data);
+        console.log("Response Received");
+        sessionStorage.setItem('loggedUser', this.user.email);
+        sessionStorage.setItem('USER', "user");
+        sessionStorage.setItem('ROLE', "user");
+        sessionStorage.setItem('name', this.user.email);
+        sessionStorage.setItem('gender', "male");
+        this._router.navigate(['/userdashboard']);
+      },
+      (error: { error: any; }) => {
+        console.log(error.error);
+        this.msg = "Bad credentials, please enter valid credentials !!!";
+      }
+    )
   }
 
-  loginDoctor()
-  {
-      this._service.loginDoctorFromRemote(this.doctor).subscribe(
-        (data: any) => {
-          console.log(data);
-          console.log("Response Received");
-          sessionStorage.clear();
-          sessionStorage.setItem('loggedUser', this.doctor.email);
-          sessionStorage.setItem('USER', "doctor");
-          sessionStorage.setItem('ROLE', "doctor");
-          sessionStorage.setItem('doctorname',this.doctor.email);
-          sessionStorage.setItem('gender', "male");
-          this._router.navigate(['/doctordashboard']);
-        },
-        (error: { error: any; }) => {
-          console.log(error.error);
-          this.msg="Bad credentials, please enter valid credentials !!!";
-        }
-      )
+  loginDoctor() {
+    this._service.loginDoctorFromRemote(this.doctor).subscribe(
+      (data: any) => {
+        console.log(data);
+        console.log("Response Received");
+        sessionStorage.clear();
+        sessionStorage.setItem('loggedUser', this.doctor.email);
+        sessionStorage.setItem('USER', "doctor");
+        sessionStorage.setItem('ROLE', "doctor");
+        sessionStorage.setItem('doctorname', this.doctor.email);
+        sessionStorage.setItem('gender', "male");
+        this._router.navigate(['/doctordashboard']);
+      },
+      (error: { error: any; }) => {
+        console.log(error.error);
+        this.msg = "Bad credentials, please enter valid credentials !!!";
+      }
+    )
   }
 
-  adminLogin()
-  {
-    if(this._service.adminLoginFromRemote(this.adminEmail, this.adminPassword)) 
-    {
+  adminLogin() {
+    if (this._service.adminLoginFromRemote(this.adminEmail, this.adminPassword)) {
       sessionStorage.setItem('loggedUser', this.adminEmail);
       sessionStorage.setItem('USER', "admin");
       sessionStorage.setItem('ROLE', "admin");
@@ -77,8 +75,7 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem('gender', "male");
       this._router.navigate(['/admindashboard']);
     }
-    else 
-    {
+    else {
       console.log("Exception Occured");
       this.msg = 'Bad admin credentials !!!'
     }
