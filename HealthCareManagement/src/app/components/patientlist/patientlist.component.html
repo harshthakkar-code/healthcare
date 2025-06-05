@@ -61,8 +61,8 @@
               <span *ngIf="patient.appointmentstatus === 'reject'" class="rejected">Rejected</span>
             </ng-container>
             <ng-container *ngIf="patient.appointmentstatus === 'false' && (currRole === 'doctor' || currRole === 'DOCTOR')">
-              <button (click)="acceptRequest(patient.slot)" class="accepted btn-badge">Accept</button>
-              <button (click)="rejectRequest(patient.slot)" class="rejected btn-badge">Reject</button>
+              <button (click)="acceptRequest(patient.slot, patient)" class="accepted btn-badge">Accept</button>
+              <button (click)="rejectRequest(patient.slot, patient)" class="rejected btn-badge">Reject</button>
             </ng-container>
             <ng-container *ngIf="patient.appointmentstatus === 'accept' && (currRole === 'doctor' || currRole === 'DOCTOR')">
               <span class="accepted">Accepted</span>

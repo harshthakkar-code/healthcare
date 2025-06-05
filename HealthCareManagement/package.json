@@ -20,6 +20,7 @@
     "@angular/platform-browser": "~12.0.3",
     "@angular/platform-browser-dynamic": "~12.0.3",
     "@angular/router": "~12.0.3",
+    "@sendgrid/mail": "^8.1.5",
     "angular-bootstrap-md": "^11.1.0",
     "bootstrap": "^5.0.1",
     "font-awesome": "^4.7.0",

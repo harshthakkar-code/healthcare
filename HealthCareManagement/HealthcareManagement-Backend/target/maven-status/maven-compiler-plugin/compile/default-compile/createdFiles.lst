@@ -6,6 +6,7 @@ com\application\controller\UserController.class
 com\application\model\Slots.class
 com\application\service\S3Service.class
 com\application\controller\RegistrationController.class
+com\application\dto\AppointmentEmailRequest.class
 com\application\controller\LoginController.class
 com\application\util\JwtUtils.class
 com\application\model\Appointments.class
@@ -15,9 +16,11 @@ com\application\model\User.class
 com\application\repository\PrescriptionRepository.class
 com\application\service\DoctorRegistrationService.class
 com\application\HealthcareManagementBackendApplication.class
+com\application\service\EmailService.class
 com\application\service\PrescriptionService.class
 com\application\repository\UserRegistrationRepository.class
 com\application\model\Prescription.class
+com\application\controller\EmailController.class
 com\application\model\AuthRequest.class
 com\application\service\UserRegistrationService.class
 com\application\repository\SlotBookingRepository.class
