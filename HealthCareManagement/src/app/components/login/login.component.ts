@@ -37,7 +37,8 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('ROLE', "user");
         sessionStorage.setItem('name', this.user.email);
         sessionStorage.setItem('gender', "male");
-        this._router.navigate(['/userdashboard']);
+        // this._router.navigate(['/userdashboard']);
+        this._router.navigate(['/doctorlist']);
       },
       (error: { error: any; }) => {
         console.log(error.error);
@@ -57,7 +58,8 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('ROLE', "doctor");
         sessionStorage.setItem('doctorname', this.doctor.email);
         sessionStorage.setItem('gender', "male");
-        this._router.navigate(['/doctordashboard']);
+        // this._router.navigate(['/doctordashboard']);
+        this._router.navigate(['/appointments']);
       },
       (error: { error: any; }) => {
         console.log(error.error);

@@ -1,112 +1,138 @@
-@import url('https://fonts.googleapis.com/css2?family=Mate+SC&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap');
 
-.panel-body{
-  margin-left: 1%;
-  margin-right: 2%;
-}
-thead{
-  background-color: rgb(35, 136, 106);
-}
-table, td{
+.approval-status-heading {
   text-align: center;
-  align-items: center;
-  vertical-align: middle;
-}
-table, td, tr{
-  border: 1px solid rgb(163, 161, 161);
-  font-family: serif;
-  font-weight: bold;
-  font-style: normal;
-  font-size: large;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  padding: 32px 0 12px 0;
+  margin: 0;
+  letter-spacing: 0.5px;
 }
 
-th{
-  text-transform: uppercase;
-  color: white;
-  font-family: Helvetica;
-  font-style: italic;
-  font-size: normal;
-}
-td{
-  text-transform:none;
-}
-.accepted{
-  border: 1px solid black;
-  border-radius: 10px;
-  background-color: rgb(30, 116, 30);
-  padding: 5px 10px 5px 10px;
-  color: white;
-  font-weight: bolder;
-}
-.pending{
-  border: 1px solid black;
-  border-radius: 10px;
-  background-color: rgb(196, 137, 28);
-  padding: 5px 10px 5px 10px;
-  color: white;
-  font-weight: bolder;
-}
-.rejected{
-  border: 1px solid black;
-  border-radius: 10px;
-  background-color: red;
-  padding: 5px 10px 5px 10px;
-  color: white;
-  font-weight: bolder;
+.approval-heading-sub {
+  font-size: 1.05rem;
+  color: #555 !important;
+  font-weight: 500;
+  margin-left: 6px;
 }
 
-.panel-body{
-  margin-left: 1%;
-  margin-right: 2%;
+.approval-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 10px;
+  padding: 0 10px;
+  background: #fff;
+  font-size: 1rem;
+  box-shadow: 0 4px 24px 0 rgba(62, 194, 184, 0.10);
+  border-radius: 18px;
+  overflow: hidden;
 }
-thead{
-  background-color: rgb(151, 44, 44);
-}
-table, td{
+
+.approval-table th, .approval-table td {
+  border: 1px solid #e3e9ed;
   text-align: center;
-  align-items: center;
-  vertical-align: middle;
-}
-table, td, tr{
-  border: 1px solid rgb(163, 161, 161);
-  font-family: serif;
-  font-weight: bold;
-  font-style: normal;
-  font-size: large;
+  padding: 16px 10px;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1.03rem;
+  font-weight: 500;
+  text-transform: none;
 }
 
-th{
-  text-transform: uppercase;
-  color: white;
-  font-family: Helvetica;
-  font-style: italic;
-  font-size: normal;
+.approval-table th {
+  background: #3dc2b8;
+  color: #fff;
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
 }
-td{
-  text-transform:none;
+
+.approval-table td {
+  background: #f8fdff;
+  color: #2a3d4a;
 }
-.accepted{
-  border: 1px solid black;
-  border-radius: 10px;
-  background-color: rgb(30, 116, 30);
-  padding: 5px 10px 5px 10px;
-  color: white;
-  font-weight: bolder;
+
+.approval-table tr:nth-child(even) td {
+  background: #ecf8fb;
 }
-.pending{
-  border: 1px solid black;
-  border-radius: 10px;
-  background-color: rgb(196, 137, 28);
-  padding: 5px 10px 5px 10px;
-  color: white;
-  font-weight: bolder;
+
+.approval-table th:first-child {
+  border-top-left-radius: 14px;
 }
-.rejected{
-  border: 1px solid black;
-  border-radius: 10px;
-  background-color: red;
-  padding: 5px 10px 5px 10px;
-  color: white;
-  font-weight: bolder;
+.approval-table th:last-child {
+  border-top-right-radius: 14px;
+}
+.approval-table tr:last-child td:first-child {
+  border-bottom-left-radius: 14px;
+}
+.approval-table tr:last-child td:last-child {
+  border-bottom-right-radius: 14px;
+}
+
+.bloodimg {
+  border-radius: 50%;
+  border: 2px solid #e3e9ed;
+  background: #e1f5fa;
+  width: 50px !important;
+  height: 50px !important;
+  object-fit: cover;
+}
+
+/* Status Badges/Buttons (last column only) */
+.accepted,
+.pending,
+.rejected {
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 5px 14px;
+  border: none;
+  font-size: 1rem;
+  display: inline-block;
+  margin: 2px 0;
+}
+.accepted { background: #24b05a; color: #fff; }
+.pending  { background: #c4891c; color: #fff; }
+.rejected { background: #ed3c50; color: #fff; }
+
+.btn-badge {
+  border: none;
+  outline: none;
+  margin: 0 2px;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .approval-table th, .approval-table td {
+    padding: 7px 2px;
+    font-size: 0.93rem;
+  }
+  .bloodimg {
+    width: 36px !important;
+    height: 36px !important;
+  }
+}
+/* Container for the status buttons */
+.status-btn-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; /* Space between buttons */
+}
+
+/* Make Accept/Reject buttons larger and more padded */
+.btn-badge,
+.accepted,
+.rejected {
+  min-width: 100px;
+  padding: 10px 0 !important;
+  font-size: 1.07rem !important;
+  border-radius: 8px !important;
+  font-family: 'Montserrat', Arial, sans-serif !important;
+}
+
+/* Optional: add a little more margin to status column */
+.approval-table td:last-child {
+  padding-left: 12px !important;
+  padding-right: 12px !important;
 }

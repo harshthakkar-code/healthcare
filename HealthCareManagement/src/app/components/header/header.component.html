@@ -1,3 +1,4 @@
+<!-- header.component.html -->
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark" class="navCss nordis-navbar" [containerInside]="false">
   <!-- Hamburger menu icon (left) -->
   <button style="background-color: black;" class="nordis-hamburger" (click)="toggleSidebar()" aria-label="Open menu">
@@ -12,13 +13,13 @@
   <!-- Right side links -->
   <links>
     <ul class="navbar-nav nordis-navbar-links ml-auto">
-      <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect (click)="navigateHome()">
+      <li class="nav-item" *ngIf="currRole === 'admin'">
+        <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/admindashboard']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
           <i class="fa fa-home"></i> Home
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect (click)="navigateDoctorsList()">
+        <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/doctorlist']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
           <i class="fa fa-user-md"></i> Doctors List
         </a>
       </li>
@@ -40,40 +41,72 @@
 </mdb-navbar>
 
 <!-- Sidebar overlay and drawer -->
-<!-- Sidebar overlay and drawer -->
 <div class="nordis-sidebar-overlay" *ngIf="sidebarOpen" (click)="toggleSidebar()"></div>
 <nav class="nordis-sidebar" [class.open]="sidebarOpen">
   <button class="nordis-close-btn" (click)="toggleSidebar()" aria-label="Close menu">&times;</button>
-  <!-- Sidebar content goes here -->
   <div class="sidebar-content">
-    <h4> {{ getDashboardTitle() }}</h4>
-    
+    <h4>{{ getDashboardTitle() }}</h4>
     <ul>
-
-      <!-- For user and doctor -->
+      <!-- User or Doctor -->
       <li *ngIf="currRole === 'user' || currRole === 'doctor'">
-        <a (click)="approvalStatus(); toggleSidebar()">Approval Status</a>
+        <a [routerLink]="['/approvalstatus']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" (click)="toggleSidebar()">
+          <i class="fa fa-check-circle-o"></i> Approval Status
+        </a>
       </li>
-      
-      <!-- For doctor and admin -->
+      <!-- Doctor or Admin -->
       <li *ngIf="currRole === 'doctor' || currRole === 'admin'">
-        <a (click)="patientList(); toggleSidebar()">Patients</a>
+        <a [routerLink]="['/patientlist']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" (click)="toggleSidebar()">
+          <i class="fa fa-user"></i> Patients
+        </a>
       </li>
-
-      <!-- For user only -->
-      <li *ngIf="currRole === 'user'"><a (click)="checkSlots(); toggleSidebar()">Check Slots</a></li>
-      <li *ngIf="currRole === 'user'"><a (click)="bookAppointment(); toggleSidebar()">New Appointment</a></li>
-      <li *ngIf="currRole === 'user'"><a (click)="yourPrescription(); toggleSidebar()">Your Prescription</a></li>
-
-      <!-- For doctor only -->
-      <li *ngIf="currRole === 'doctor'"><a (click)="yourSchedule(); toggleSidebar()">Your Schedule</a></li>
-      <li *ngIf="currRole === 'doctor'"><a (click)="appointments(); toggleSidebar()">Appointments</a></li>
-      <li *ngIf="currRole === 'doctor'"><a (click)="addPrescription(); toggleSidebar()">Add Prescription</a></li>
-      
-      <!-- For admin only -->
-      <li *ngIf="currRole === 'admin'"><a (click)="addDoctor(); toggleSidebar()">Add Doctor</a></li>
-      <li *ngIf="currRole === 'admin'"><a (click)="approvedoctors(); toggleSidebar()">Approve Doctors</a></li>
-      <li *ngIf="currRole === 'admin'"><a (click)="userlist(); toggleSidebar()">Users</a></li>
+      <!-- User only -->
+      <li *ngIf="currRole === 'user'">
+        <a [routerLink]="['/checkslots']" routerLinkActive="active-link" (click)="toggleSidebar()">
+          <i class="fa fa-clock-o"></i> Check Slots
+        </a>
+      </li>
+      <li *ngIf="currRole === 'user'">
+        <a [routerLink]="['/bookappointment']" routerLinkActive="active-link" (click)="toggleSidebar()">
+          <i class="fa fa-calendar"></i> New Appointment
+        </a>
+      </li>
+      <li *ngIf="currRole === 'user'">
+        <a [routerLink]="['/prescriptionlist']" routerLinkActive="active-link" (click)="toggleSidebar()">
+          <i class="fa fa-sticky-note-o"></i> Your Prescription
+        </a>
+      </li>
+      <!-- Doctor only -->
+      <li *ngIf="currRole === 'doctor'">
+        <a [routerLink]="['/scheduleslots']" routerLinkActive="active-link" (click)="toggleSidebar()">
+          <i class="fa fa-calendar-check-o"></i> Your Schedule
+        </a>
+      </li>
+      <li *ngIf="currRole === 'doctor'">
+        <a [routerLink]="['/appointments']" routerLinkActive="active-link" (click)="toggleSidebar()">
+          <i class="fa fa-calendar"></i> Appointments
+        </a>
+      </li>
+      <li *ngIf="currRole === 'doctor'">
+        <a [routerLink]="['/addprescription']" routerLinkActive="active-link" (click)="toggleSidebar()">
+          <i class="fa fa-plus-square"></i> Add Prescription
+        </a>
+      </li>
+      <!-- Admin only -->
+      <li *ngIf="currRole === 'admin'">
+        <a [routerLink]="['/addDoctor']" routerLinkActive="active-link" (click)="toggleSidebar()">
+          <i class="fa fa-user-plus"></i> Add Doctor
+        </a>
+      </li>
+      <li *ngIf="currRole === 'admin'">
+        <a [routerLink]="['/approvedoctors']" routerLinkActive="active-link" (click)="toggleSidebar()">
+          <i class="fa fa-check"></i> Approve Doctors
+        </a>
+      </li>
+      <li *ngIf="currRole === 'admin'">
+        <a [routerLink]="['/userlist']" routerLinkActive="active-link" (click)="toggleSidebar()">
+          <i class="fa fa-users"></i> Users
+        </a>
+      </li>
     </ul>
   </div>
 </nav>

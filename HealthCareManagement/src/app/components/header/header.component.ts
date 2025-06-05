@@ -114,7 +114,7 @@ export class HeaderComponent implements OnInit {
 
  //addDoctor
  addDoctor() {
-  this._router.navigate(['/add-doctor']);
+  this._router.navigate(['/addDoctor']);
 }
 
   //yourPrescription

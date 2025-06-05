@@ -21,6 +21,7 @@
   box-shadow: 0 4px 24px 0 rgba(62, 194, 184, 0.10);
   border-radius: 18px;
   overflow: hidden;
+  padding: 0 10px;
 }
 
 .approval-table th, .approval-table td {

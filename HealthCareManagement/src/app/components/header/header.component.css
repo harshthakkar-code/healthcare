@@ -234,3 +234,10 @@
   background: rgba(0, 0, 0, 0.17);
   transition: background 0.3s ease;
 }
+.active-link {
+  background-color: #e8f7f6 !important;
+  color: #21978c !important;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
