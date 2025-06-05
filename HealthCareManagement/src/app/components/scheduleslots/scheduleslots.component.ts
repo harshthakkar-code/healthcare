@@ -18,20 +18,29 @@ export class ScheduleslotsComponent implements OnInit {
 
   // Control Add Slot Form visibility
   showAddSlotForm = false;
+  doctorName: string = '';
+  doctorEmail: string = '';
+  doctorSpecialization: string = '';
 
   constructor(private _service: DoctorService, private _router: Router) { }
 
-  ngOnInit(): void {
-    // Remove jQuery usage
+ ngOnInit(): void {
+  this.loggedUser = (sessionStorage.getItem('loggedUser') || '').replace(/"/g, '');
+  this.currRole = (sessionStorage.getItem('ROLE') || '').replace(/"/g, '');
 
-    this.loggedUser = JSON.stringify(sessionStorage.getItem('loggedUser') || '{}');
-    this.loggedUser = this.loggedUser.replace(/"/g, '');
+  // Set local vars for easy template use
+  this.doctorName = (sessionStorage.getItem('name') || '').replace(/"/g, '');
+  this.doctorEmail = (sessionStorage.getItem('loggedUser') || '').replace(/"/g, '');
+  this.doctorSpecialization = (sessionStorage.getItem('specialization') || '').replace(/"/g, '');
 
-    this.currRole = JSON.stringify(sessionStorage.getItem('ROLE') || '{}');
-    this.currRole = this.currRole.replace(/"/g, '');
+  // Pre-fill slot fields for form
+  this.slot.doctorname = this.doctorName;
+  this.slot.email = this.doctorEmail;
+  this.slot.specialization = this.doctorSpecialization;
 
-    this.slots = this._service.getSlotDetails(this.loggedUser);
-  }
+  this.slots = this._service.getSlotDetails(this.loggedUser);
+}
+
 
   openAddSlotForm() {
     this.showAddSlotForm = true;
@@ -48,6 +57,8 @@ export class ScheduleslotsComponent implements OnInit {
         this._router.navigate(['/doctordashboard']);
       },
       error => {
+        this.slot = new Slots(); // Reset form
+        this.closeAddSlotForm();
         console.log("process Failed");
         console.log(error.error);
       }

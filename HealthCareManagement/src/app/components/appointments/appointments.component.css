@@ -1,31 +1,59 @@
-.nordis-page-heading,
-.heading-text {
-  font-family: 'Aladin', cursive;
-  font-size: 2.2rem;
-  color: #14645c;
-  letter-spacing: 1px;
-  text-align: center;
-  font-weight: bold;
-  margin-top: 28px;
-  margin-bottom: 8px;
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap');
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', Arial, sans-serif;
+  background: #f7fbfc;
 }
 
-.nordis-page-subheading,
-.subheading-text {
-  font-family: 'Montserrat', Arial, sans-serif;
-  font-size: 1.13rem;
-  color: #32b7ae;
-  font-weight: 600;
-  text-align: center;
-  display: block;
-  margin-bottom: 28px;
+.nordis-app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f7fbfc;
 }
 
+app-header {
+  flex-shrink: 0;
+}
+
+.nordis-main-content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+app-footer {
+  margin-top: auto;
+  flex-shrink: 0;
+}
+
+/* Page Heading */
+.approval-status-heading {
+  text-align: center;
+  color: #138b13;
+  font-family: 'Lato', Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: 300;
+  padding: 32px 0 18px 0;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+.approval-status-heading small {
+  color: #206f20;
+  font-size: 1.09rem;
+  font-weight: 400;
+}
+
+/* Appointments Grid */
 .nordis-appointments-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(330px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
   gap: 32px;
-  padding: 16px 6vw 24px 6vw;
+  padding: 16px 6vw 36px 6vw;
 }
 
 .nordis-appointment-card {
@@ -39,6 +67,7 @@
   min-height: 500px;
   position: relative;
   transition: transform .18s, box-shadow .18s;
+  font-family: 'Lato', Arial, sans-serif;
 }
 
 .nordis-appointment-card:hover {
@@ -78,33 +107,33 @@
   column-gap: 8px;
   width: 100%;
   padding: 18px 26px 10px 26px;
-  font-family: 'Montserrat', Arial, sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.06rem;
 }
 
 .nordis-label {
-  color: #9fc0bd;
+  color: #99b6b2;
   font-weight: 700;
-  letter-spacing: 0.4px;
-  font-size: 1.08rem;
+  letter-spacing: 0.2px;
+  font-size: 1.04rem;
   text-align: left;
 }
 .nordis-value {
   color: #18667a;
-  font-weight: 700;
+  font-weight: 400;
   text-align: left;
-  font-size: 1.08rem;
+  font-size: 1.03rem;
   word-break: break-word;
 }
 
+/* Status Badges */
 .nordis-status {
   position: absolute;
   bottom: 18px;
   left: 50%;
   transform: translateX(-50%);
-  font-family: 'Montserrat', Arial, sans-serif;
+  font-family: 'Lato', Arial, sans-serif;
   font-size: 1.04rem;
-  font-weight: bold;
+  font-weight: 700;
   border-radius: 20px;
   padding: 7px 28px;
   text-align: center;
@@ -116,19 +145,24 @@
 .nordis-status.pending { background: #ffc75d; color: #6d4400; }
 .nordis-status.rejected { background: #e85a6a; color: #fff; }
 
+/* Responsive */
+@media (max-width: 1024px) {
+  .nordis-appointments-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    padding: 12px 2vw 24px 2vw;
+  }
+  .nordis-appointment-details {
+    padding: 12px 10px 10px 10px;
+  }
+}
+@media (max-width: 700px) {
+  .approval-status-heading {
+    font-size: 1.25rem;
+    padding: 16px 0 10px 0;
+  }
+  .nordis-appointment-card {
+    min-height: 380px;
+  }
+}
 
-.approval-status-heading {
-  text-align: center;
-  color: #138b13;
-  font-family: 'Montserrat', Arial, sans-serif;
-  font-size: 2rem;
-  font-weight: 800;
-  padding: 32px 0 24px 0;   /* Top and bottom padding */
-  margin: 0;
-  letter-spacing: 0.5px;
-}
-.approval-status-heading small {
-  color: #206f20;
-  font-size: 1.09rem;
-  font-weight: 600;
-}

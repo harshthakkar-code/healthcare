@@ -25,7 +25,7 @@ th{
   text-transform: uppercase;
   color: white;
   font-family: Helvetica;
-  font-style: italic;
+  /* font-style: italic; */
   font-size: normal;
 }
 td{
