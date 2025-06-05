@@ -16,37 +16,35 @@ export class PatientlistComponent implements OnInit {
 
   currRole = '';
   loggedUser = '';
-  patients : Observable<Appointment[]> | undefined;
-  slots : Observable<Slots[]> | undefined;
-  responses : Observable<any> | undefined;
+  patients: Observable<Appointment[]> | undefined;
+  slots: Observable<Slots[]> | undefined;
+  responses: Observable<any> | undefined;
 
   constructor(
-    private _service : DoctorService,
+    private _service: DoctorService,
     private emailService: EmailService,
     private snackBar: MatSnackBar
   ) { }
 
-  ngOnInit(): void
-  {
-    this.loggedUser = JSON.stringify(sessionStorage.getItem('loggedUser')|| '{}');
+  ngOnInit(): void {
+    this.loggedUser = JSON.stringify(sessionStorage.getItem('loggedUser') || '{}');
     this.loggedUser = this.loggedUser.replace(/"/g, '');
 
-    this.currRole = JSON.stringify(sessionStorage.getItem('ROLE')|| '{}'); 
+    this.currRole = JSON.stringify(sessionStorage.getItem('ROLE') || '{}');
     this.currRole = this.currRole.replace(/"/g, '');
 
-    if(this.currRole === "user")
-    {
+    if (this.currRole === "user") {
       this.patients = this._service.getPatientListByDoctorEmail(this.loggedUser);
     }
-    else
-    {
+    else {
       this.patients = this._service.getPatientList();
     }
     this.slots = this._service.getSlotDetails(this.loggedUser);
   }
 
-  acceptRequest(slot : string, patient: any)
-  {
+  acceptRequest(slot: string, patient: any) {
+    this.responses = this._service.acceptRequestForPatientApproval(slot);
+    patient.status = 'accepted';
     this.responses = this._service.acceptRequestForPatientApproval(slot);
     $("#acceptbtn").hide();
     $("#rejectbtn").hide();
@@ -77,8 +75,9 @@ export class PatientlistComponent implements OnInit {
     });
   }
 
-  rejectRequest(slot : string, patient: any)
-  {
+  rejectRequest(slot: string, patient: any) {
+    this.responses = this._service.rejectRequestForPatientApproval(slot);
+    patient.status = 'rejected';
     this.responses = this._service.rejectRequestForPatientApproval(slot);
     $("#acceptbtn").hide();
     $("#rejectbtn").hide();
