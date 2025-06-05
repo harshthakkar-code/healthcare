@@ -23,15 +23,17 @@ public class S3Service {
     public S3Service() {
 
          Dotenv dotenv = Dotenv.load();
-        String accessKey = dotenv.get("AWS_ACCESS_KEY");
-        String secretKey = dotenv.get("AWS_SECRET_KEY");
+        String accessKey = dotenv.get("AWS_S3_ACCEESSKEY");
+        String secretKey = dotenv.get("AWS_S3_SECRETKEY");
+
+
+         if (accessKey == null || secretKey == null) {
+        throw new RuntimeException("AWS credentials are not set in .env file");
+    }
         this.s3 = S3Client.builder()
                 .region(Region.EU_NORTH_1)  // Replace with your region
                 .credentialsProvider(
-                        StaticCredentialsProvider.create(AwsBasicCredentials.create(
-                                accessKey, secretKey
-                        ))
-                )
+                        StaticCredentialsProvider.create(AwsBasicCredentials.create(accessKey, secretKey)))
                 .build();
     }
 

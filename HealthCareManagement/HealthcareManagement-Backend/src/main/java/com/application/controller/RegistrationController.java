@@ -33,7 +33,7 @@ public class RegistrationController
 	@Autowired
 	private DoctorRegistrationService doctorRegisterService;
 	
-@PostMapping("/registeruser")
+@PostMapping(value = "/registeruser", consumes = "multipart/form-data")
 @CrossOrigin(origins = "http://localhost:4200")
 public ResponseEntity<?> registerUser(
     @RequestPart("user") User user,
@@ -57,7 +57,7 @@ public ResponseEntity<?> registerUser(
 }
 
 	
-@PostMapping("/registerdoctor")
+@PostMapping(value = "/registerdoctor", consumes = "multipart/form-data")
 @CrossOrigin(origins = "http://localhost:4200")
 public ResponseEntity<?> registerDoctor(
     @RequestPart("doctor") Doctor doctor,
