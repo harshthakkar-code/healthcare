@@ -2,6 +2,14 @@
 
 <div class="row" id="profilecard">
     <div *ngFor="let user of profileDetails | async" id="bloodCards">
+      <div class="form-group text-center">
+  <img *ngIf="user.photo" 
+       [src]="user.photo" 
+       class="img-thumbnail" 
+       style="width: 150px; height: 150px; object-fit: cover;" 
+       alt="User Photo">
+</div>
+
         <a><img *ngIf="user.gender === 'Male' || user.gender === 'male'" class="bloodimg" [src]="'assets/img/maleuser.png'" width="120" height="120"></a>
         <a><img *ngIf="user.gender === 'Female' || user.gender === 'female'" class="bloodimg" [src]="'assets/img/femaleuser.png'" width="120" height="120"></a>
         <div class="card-block">

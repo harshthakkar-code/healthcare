@@ -19,6 +19,9 @@ export class RegistrationComponent implements OnInit {
   showUserConfirmPassword: boolean = false;
   showDoctorPassword: boolean = false;
   showDoctorConfirmPassword: boolean = false;
+  selectedUserFile: File | null = null;
+  selectedDoctorFile: File | null = null;
+
 
   constructor(private _registrationService: RegistrationService, private _doctorService: DoctorService, private _router: Router) { }
 
@@ -26,37 +29,98 @@ export class RegistrationComponent implements OnInit {
     // No jQuery required for tabs anymore
   }
 
+  // registerUser() {
+  //   if (this.user.password !== this.user.confirmPassword) {
+  //     this.msg = "Passwords do not match!";
+  //     return;
+  //   }
+  //   this._registrationService.registerUserFromRemote(this.user).subscribe(
+  //     data => {
+  //       sessionStorage.setItem("username", this.user.username);
+  //       sessionStorage.setItem("gender", this.user.gender);
+  //       this._router.navigate(['/registrationsuccess']);
+  //     },
+  //     error => {
+  //       this.msg = "User with " + this.user.email + " already exists!";
+  //     }
+  //   );
+  // }
+
+
   registerUser() {
-    if (this.user.password !== this.user.confirmPassword) {
-      this.msg = "Passwords do not match!";
-      return;
-    }
-    this._registrationService.registerUserFromRemote(this.user).subscribe(
-      data => {
-        sessionStorage.setItem("username", this.user.username);
-        sessionStorage.setItem("gender", this.user.gender);
-        this._router.navigate(['/registrationsuccess']);
-      },
-      error => {
-        this.msg = "User with " + this.user.email + " already exists!";
-      }
-    );
+  if (this.user.password !== this.user.confirmPassword) {
+    this.msg = "Passwords do not match!";
+    return;
   }
 
-  registerDoctor() {
-    if (this.doctor.password !== this.doctor.confirmPassword) {
-      this.msg = "Passwords do not match!";
-      return;
-    }
-    this._registrationService.registerDoctorFromRemote(this.doctor).subscribe(
-      data => {
-        sessionStorage.setItem("doctorname", this.doctor.doctorname);
-        sessionStorage.setItem("gender", this.doctor.gender);
-        this._router.navigate(['/registrationsuccess']);
-      },
-      error => {
-        this.msg = "Doctor with " + this.doctor.email + " already exists!";
-      }
-    );
+  const formData = new FormData();
+  formData.append('user', new Blob([JSON.stringify(this.user)], { type: 'application/json' }));
+  if (this.selectedUserFile) {
+    formData.append('file', this.selectedUserFile);
   }
+
+  this._registrationService.registerUserWithPhoto(formData).subscribe(
+    data => {
+      sessionStorage.setItem("username", this.user.username);
+      sessionStorage.setItem("gender", this.user.gender);
+      this._router.navigate(['/registrationsuccess']);
+    },
+    error => {
+      this.msg = "User with " + this.user.email + " already exists!";
+    }
+  );
+}
+
+  // registerDoctor() {
+  //   if (this.doctor.password !== this.doctor.confirmPassword) {
+  //     this.msg = "Passwords do not match!";
+  //     return;
+  //   }
+  //   this._registrationService.registerDoctorFromRemote(this.doctor).subscribe(
+  //     data => {
+  //       sessionStorage.setItem("doctorname", this.doctor.doctorname);
+  //       sessionStorage.setItem("gender", this.doctor.gender);
+  //       this._router.navigate(['/registrationsuccess']);
+  //     },
+  //     error => {
+  //       this.msg = "Doctor with " + this.doctor.email + " already exists!";
+  //     }
+  //   );
+  // }
+
+registerDoctor() {
+  if (this.doctor.password !== this.doctor.confirmPassword) {
+    this.msg = "Passwords do not match!";
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append('doctor', new Blob([JSON.stringify(this.doctor)], { type: 'application/json' }));
+  if (this.selectedDoctorFile) {
+    formData.append('file', this.selectedDoctorFile);
+  }
+
+  this._registrationService.registerDoctorWithPhoto(formData).subscribe(
+    data => {
+      sessionStorage.setItem("doctorname", this.doctor.doctorname);
+      sessionStorage.setItem("gender", this.doctor.gender);
+      this._router.navigate(['/registrationsuccess']);
+    },
+    error => {
+      this.msg = "Doctor with " + this.doctor.email + " already exists!";
+    }
+  );
+}
+
+  handleFileInput(event: any, role: 'user' | 'doctor') {
+  const file = event.target.files[0];
+  if (file) {
+    if (role === 'user') {
+      this.selectedUserFile = file;
+    } else {
+      this.selectedDoctorFile = file;
+    }
+  }
+}
+
 }

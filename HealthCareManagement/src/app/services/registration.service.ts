@@ -28,4 +28,13 @@ public registerDoctorFromRemote(doctor : Doctor):Observable<any>
     return this._http.post<any>(`${NAV_URL}/registerdoctor`,doctor)
 }
 
+
+registerUserWithPhoto(formData: FormData) {
+  return this._http.post<any>("http://localhost:8080/registeruser", formData);
+}
+
+registerDoctorWithPhoto(formData: FormData) {
+  return this._http.post<any>("http://localhost:8080/registerdoctor", formData);
+}
+
 }

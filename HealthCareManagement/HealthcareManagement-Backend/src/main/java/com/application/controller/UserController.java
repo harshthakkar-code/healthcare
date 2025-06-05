@@ -33,6 +33,7 @@ public class UserController
 	@Autowired
 	private PrescriptionService prescriptionService;
 	
+	
 	@GetMapping("/userlist")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public ResponseEntity<List<User>> getUsers() throws Exception

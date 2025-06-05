@@ -2,6 +2,7 @@ package com.application.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Column;
 
 @Entity
 public class Doctor 
@@ -17,13 +18,16 @@ public class Doctor
 	private String address;
 	private String password;
 	private String status;
-	
+
+@Column(length = 512)
+private String photo;
+
 	public Doctor() 
 	{
 		super();
 	}
 
-	public Doctor(String email, String doctorname, String mobile, String gender, String experience, String specialization, String previoushospital, String address, String password, String status) 
+	public Doctor(String email, String doctorname, String mobile, String gender, String experience, String specialization, String previoushospital, String address, String password, String status, String photo) 
 	{
 		super();
 		this.email = email;
@@ -36,6 +40,8 @@ public class Doctor
 		this.address = address;
 		this.password = password;
 		this.status = status;
+	    this.photo = photo;
+
 	}
 
 	public String getEmail() 
@@ -137,5 +143,14 @@ public class Doctor
 	{
 		this.status = status;
 	}
+
+	
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
 
 }

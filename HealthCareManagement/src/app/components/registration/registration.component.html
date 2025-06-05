@@ -100,6 +100,10 @@
             </div>
           </div>
         </div>
+        <div class="input-block">
+  <label style="font-weight: 500;">Upload Profile Photo</label>
+  <input type="file" (change)="handleFileInput($event, 'user')" accept="image/*" />
+</div>
         <div class="nordis-checkbox">
           <input type="checkbox" required name="agree" #agree="ngModel" [(ngModel)]="user.agree" />
           <span>I agree to all Terms & Conditions</span>
@@ -202,6 +206,11 @@
             </div>
           </div>
         </div>
+        <div class="input-block">
+  <label style="font-weight: 500;">Upload Profile Photo</label>
+  <input type="file" (change)="handleFileInput($event, 'doctor')" accept="image/*" />
+</div>
+
         <div class="nordis-checkbox">
           <input type="checkbox" required name="agree" #agree="ngModel" [(ngModel)]="doctor.agree" />
           <span>I agree to all Terms & Conditions</span>

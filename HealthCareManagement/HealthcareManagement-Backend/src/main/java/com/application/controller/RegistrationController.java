@@ -17,52 +17,69 @@ import com.application.model.Slots;
 import com.application.model.User;
 import com.application.service.DoctorRegistrationService;
 import com.application.service.UserRegistrationService;
+import com.application.service.S3Service;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 public class RegistrationController 
 {
+	@Autowired
+	private S3Service s3Service;
+
 	@Autowired
 	private UserRegistrationService userRegisterService;
 	
 	@Autowired
 	private DoctorRegistrationService doctorRegisterService;
 	
-	@PostMapping("/registeruser")
-	@CrossOrigin(origins = "http://localhost:4200")
-	public User registerUser(@RequestBody User user) throws Exception
-	{
-		String currEmail = user.getEmail();
-		if(currEmail != null || !"".equals(currEmail))
-		{
-			User userObj = userRegisterService.fetchUserByEmail(currEmail);
-			if(userObj != null)
-			{
-				throw new Exception("User with "+currEmail+" already exists !!!");
-			}
-		}
-		System.out.println("here");
-		User userObj = null;
-		userObj = userRegisterService.saveUser(user);
-		return userObj;
-	}
+@PostMapping("/registeruser")
+@CrossOrigin(origins = "http://localhost:4200")
+public ResponseEntity<?> registerUser(
+    @RequestPart("user") User user,
+    @RequestPart(value = "file", required = false) MultipartFile file
+) throws Exception {
+    String currEmail = user.getEmail();
+    if (currEmail != null && !"".equals(currEmail)) {
+        User existing = userRegisterService.fetchUserByEmail(currEmail);
+        if (existing != null) {
+            throw new Exception("User with " + currEmail + " already exists!");
+        }
+    }
+
+    if (file != null && !file.isEmpty()) {
+		String fileUrl = s3Service.uploadFile(file, "users");   // for registerUser
+        user.setPhoto(fileUrl);                       // Save S3 path in DB
+    }
+
+    User saved = userRegisterService.saveUser(user);
+    return ResponseEntity.ok(saved);
+}
+
 	
-	@PostMapping("/registerdoctor")
-	@CrossOrigin(origins = "http://localhost:4200")
-	public Doctor registerDoctor(@RequestBody Doctor doctor) throws Exception
-	{
-		String currEmail = doctor.getEmail();
-		if(currEmail != null || !"".equals(currEmail))
-		{
-			Doctor doctorObj = doctorRegisterService.fetchDoctorByEmail(currEmail);
-			if(doctorObj != null)
-			{
-				throw new Exception("Doctor with "+currEmail+" already exists !!!");
-			}
-		}
-		Doctor doctorObj = null;
-		doctorObj = doctorRegisterService.saveDoctor(doctor);
-		return doctorObj;
-	}
+@PostMapping("/registerdoctor")
+@CrossOrigin(origins = "http://localhost:4200")
+public ResponseEntity<?> registerDoctor(
+    @RequestPart("doctor") Doctor doctor,
+    @RequestPart(value = "file", required = false) MultipartFile file
+) throws Exception {
+    String currEmail = doctor.getEmail();
+    if (currEmail != null && !"".equals(currEmail)) {
+        Doctor existing = doctorRegisterService.fetchDoctorByEmail(currEmail);
+        if (existing != null) {
+            throw new Exception("Doctor with " + currEmail + " already exists!");
+        }
+    }
+
+    if (file != null && !file.isEmpty()) {
+		String fileUrl = s3Service.uploadFile(file, "doctor");
+        doctor.setPhoto(fileUrl);                     // Save S3 path in DB
+    }
+
+    Doctor saved = doctorRegisterService.saveDoctor(doctor);
+    return ResponseEntity.ok(saved);
+}
+
 	
 	@PostMapping("/addDoctor")
 	@CrossOrigin(origins = "http://localhost:4200")

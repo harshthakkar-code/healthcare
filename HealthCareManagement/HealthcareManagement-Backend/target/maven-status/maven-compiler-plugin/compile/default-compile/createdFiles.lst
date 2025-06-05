@@ -1,3 +1,12 @@
+<<<<<<< Updated upstream
+com\application\repository\DoctorRegistrationRepository.class
+com\application\model\Doctor.class
+com\application\repository\AppointmentsRepository.class
+com\application\filter\JwtFilter.class
+com\application\controller\UserController.class
+com\application\model\Slots.class
+com\application\service\S3Service.class
+=======
 com\application\HealthcareManagementBackendApplication.class
 com\application\repository\DoctorRegistrationRepository.class
 com\application\model\Doctor.class
@@ -8,10 +17,26 @@ com\application\controller\UserController.class
 com\application\repository\UserRegistrationRepository.class
 com\application\model\Slots.class
 com\application\model\Prescription.class
+>>>>>>> Stashed changes
 com\application\controller\RegistrationController.class
 com\application\controller\LoginController.class
 com\application\util\JwtUtils.class
 com\application\model\Appointments.class
+<<<<<<< Updated upstream
+com\application\config\SecurityConfig.class
+com\application\controller\DoctorController.class
+com\application\model\User.class
+com\application\repository\PrescriptionRepository.class
+com\application\service\DoctorRegistrationService.class
+com\application\HealthcareManagementBackendApplication.class
+com\application\service\PrescriptionService.class
+com\application\repository\UserRegistrationRepository.class
+com\application\model\Prescription.class
+com\application\model\AuthRequest.class
+com\application\service\UserRegistrationService.class
+com\application\repository\SlotBookingRepository.class
+com\application\service\AppointmentBookingService.class
+=======
 com\application\model\AuthRequest.class
 com\application\service\UserRegistrationService.class
 com\application\config\SecurityConfig.class
@@ -21,3 +46,4 @@ com\application\repository\SlotBookingRepository.class
 com\application\service\AppointmentBookingService.class
 com\application\repository\PrescriptionRepository.class
 com\application\service\DoctorRegistrationService.class
+>>>>>>> Stashed changes

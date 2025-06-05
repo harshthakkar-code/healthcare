@@ -2,6 +2,7 @@
 
 <div class="row" id="profilecard">
     <div *ngFor="let doctor of profileDetails | async" id="bloodCards">
+      
         <a><img style="margin-top: 2%;" *ngIf="doctor.gender === 'Male' || doctor.gender === 'male'" class="bloodimg" [src]="'assets/img/maledoctor.png'" width="130" height="140"></a>
         <a><img style="margin-top: 2%;" *ngIf="doctor.gender === 'Female' || doctor.gender === 'female'" class="bloodimg" [src]="'assets/img/femaledoctor.png'" width="130" height="140"></a>
         <div class="card-block">

@@ -2,6 +2,7 @@ package com.application.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Column;
 
 @Entity
 public class User 
@@ -14,13 +15,16 @@ public class User
 	private String age;
 	private String address;
 	private String password;
+
+	@Column(length = 512)
+    private String photo;
 	
 	public User() 
 	{
 		super();
 	}
 
-	public User(String email, String username, String mobile, String gender, String age, String address, String password)
+	public User(String email, String username, String mobile, String gender, String age, String address, String password,String photo)
 	{
 		super();
 		this.email = email;
@@ -30,6 +34,8 @@ public class User
 		this.age = age;
 		this.address = address;
 		this.password = password;
+		this.photo = photo;
+
 	}
 
 	public String getEmail() 
@@ -102,4 +108,11 @@ public class User
 		this.password = password;
 	}
 	
+	public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
 }
