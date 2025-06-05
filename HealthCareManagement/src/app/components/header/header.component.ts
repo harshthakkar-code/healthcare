@@ -82,7 +82,45 @@ export class HeaderComponent implements OnInit {
     this._router.navigate(['/approvalstatus']);
   }
 
+  //your Schedule
+  yourSchedule() {
+    this._router.navigate(['/scheduleslots']);
+  }
 
+  //Patient List
+  patientList() {
+    this._router.navigate(['/patientlist']);
+  }
+
+  //appointments
+  appointments() {
+    this._router.navigate(['/appointments']);
+  }
+
+  //addPrescription
+  addPrescription() {
+    this._router.navigate(['/addprescription']);
+  }
+
+  //userList
+  userlist() {
+    this._router.navigate(['/userlist']);
+  }
+
+  //approvedoctors
+  approvedoctors() {
+    this._router.navigate(['/approvedoctors']);
+  }
+
+ //addDoctor
+ addDoctor() {
+  this._router.navigate(['/add-doctor']);
+}
+
+  //yourPrescription
+  yourPrescription() {
+    this._router.navigate(['/prescriptionlist']);
+  }
 
   // Log out
   logout() {

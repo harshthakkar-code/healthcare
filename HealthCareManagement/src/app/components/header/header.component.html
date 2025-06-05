@@ -40,21 +40,40 @@
 </mdb-navbar>
 
 <!-- Sidebar overlay and drawer -->
+<!-- Sidebar overlay and drawer -->
 <div class="nordis-sidebar-overlay" *ngIf="sidebarOpen" (click)="toggleSidebar()"></div>
 <nav class="nordis-sidebar" [class.open]="sidebarOpen">
   <button class="nordis-close-btn" (click)="toggleSidebar()" aria-label="Close menu">&times;</button>
   <!-- Sidebar content goes here -->
   <div class="sidebar-content">
-    <h4>Menu</h4>
+    <h4> {{ getDashboardTitle() }}</h4>
+    
     <ul>
-      <li><a (click)="navigateHome(); toggleSidebar()">Home</a></li>
-      <li><a (click)="navigateDoctorsList(); toggleSidebar()">Doctors List</a></li>
-      <li><a (click)="checkSlots(); toggleSidebar()">Check Slots</a></li>
-      <li><a (click)="bookAppointment(); toggleSidebar()">New Appointment</a></li>
-      <li><a (click)="approvalStatus(); toggleSidebar()">Approval Status</a></li>
-      <!-- <li><a (click)="editProfile(); toggleSidebar()">Edit Profile</a></li>
-      <li><a (click)="logout(); toggleSidebar()">Log out</a></li> -->
-      <!-- Add more menu items here -->
+
+      <!-- For user and doctor -->
+      <li *ngIf="currRole === 'user' || currRole === 'doctor'">
+        <a (click)="approvalStatus(); toggleSidebar()">Approval Status</a>
+      </li>
+      
+      <!-- For doctor and admin -->
+      <li *ngIf="currRole === 'doctor' || currRole === 'admin'">
+        <a (click)="patientList(); toggleSidebar()">Patients</a>
+      </li>
+
+      <!-- For user only -->
+      <li *ngIf="currRole === 'user'"><a (click)="checkSlots(); toggleSidebar()">Check Slots</a></li>
+      <li *ngIf="currRole === 'user'"><a (click)="bookAppointment(); toggleSidebar()">New Appointment</a></li>
+      <li *ngIf="currRole === 'user'"><a (click)="yourPrescription(); toggleSidebar()">Your Prescription</a></li>
+
+      <!-- For doctor only -->
+      <li *ngIf="currRole === 'doctor'"><a (click)="yourSchedule(); toggleSidebar()">Your Schedule</a></li>
+      <li *ngIf="currRole === 'doctor'"><a (click)="appointments(); toggleSidebar()">Appointments</a></li>
+      <li *ngIf="currRole === 'doctor'"><a (click)="addPrescription(); toggleSidebar()">Add Prescription</a></li>
+      
+      <!-- For admin only -->
+      <li *ngIf="currRole === 'admin'"><a (click)="addDoctor(); toggleSidebar()">Add Doctor</a></li>
+      <li *ngIf="currRole === 'admin'"><a (click)="approvedoctors(); toggleSidebar()">Approve Doctors</a></li>
+      <li *ngIf="currRole === 'admin'"><a (click)="userlist(); toggleSidebar()">Users</a></li>
     </ul>
   </div>
 </nav>
