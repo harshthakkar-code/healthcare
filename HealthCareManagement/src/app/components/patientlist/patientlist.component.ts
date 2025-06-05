@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Appointment } from 'src/app/models/appointment';
-import { Doctor } from 'src/app/models/doctor';
-import { Slots } from 'src/app/models/slots';
 import { DoctorService } from 'src/app/services/doctor.service';
 import { EmailService } from 'src/app/services/email.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -16,9 +14,8 @@ export class PatientlistComponent implements OnInit {
 
   currRole = '';
   loggedUser = '';
-  patients: Observable<Appointment[]> | undefined;
-  slots: Observable<Slots[]> | undefined;
-  responses: Observable<any> | undefined;
+  patients: Appointment[] = [];
+  slots$: Observable<any[]> = of([]);
 
   constructor(
     private _service: DoctorService,
@@ -27,81 +24,51 @@ export class PatientlistComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loggedUser = JSON.stringify(sessionStorage.getItem('loggedUser') || '{}');
-    this.loggedUser = this.loggedUser.replace(/"/g, '');
+    this.loggedUser = (sessionStorage.getItem('loggedUser') || '').replace(/"/g, '');
+    this.currRole = (sessionStorage.getItem('ROLE') || '').replace(/"/g, '');
 
-    this.currRole = JSON.stringify(sessionStorage.getItem('ROLE') || '{}');
-    this.currRole = this.currRole.replace(/"/g, '');
+    let obs: Observable<Appointment[]>;
+    if (this.currRole.toLowerCase() === "user") {
+      obs = this._service.getPatientListByDoctorEmail(this.loggedUser);
+    } else {
+      obs = this._service.getPatientList();
+    }
+    obs.subscribe(patients => {
+      this.patients = patients;
+    });
 
-    if (this.currRole === "user") {
-      this.patients = this._service.getPatientListByDoctorEmail(this.loggedUser);
-    }
-    else {
-      this.patients = this._service.getPatientList();
-    }
-    this.slots = this._service.getSlotDetails(this.loggedUser);
+    this.slots$ = this._service.getSlotDetails(this.loggedUser);
   }
 
-  acceptRequest(slot: string, patient: any) {
-    this.responses = this._service.acceptRequestForPatientApproval(slot);
-    patient.status = 'accepted';
-    this.responses = this._service.acceptRequestForPatientApproval(slot);
-    $("#acceptbtn").hide();
-    $("#rejectbtn").hide();
-    $("#acceptedbtn").show();
-    $("#rejectedbtn").hide();
-
-    console.log("Accepting appointment for slot:", patient);
-
-    // Send acceptance email
-    this.emailService.sendAppointmentStatusEmail(
-      patient.email,
-      patient.patientname,
-      patient.date,
-      patient.slot,
-      'accepted'
-    ).subscribe({
-      next: () => {
-        this.snackBar.open('Appointment accepted and email sent successfully', 'Close', {
-          duration: 3000
-        });
-      },
-      error: (error) => {
-        console.error('Error sending email:', error);
-        // this.snackBar.open('Error sending email notification', 'Close', {
-        //   duration: 3000
-        // });
-      }
+  acceptRequest(slot: string, patient: Appointment) {
+    this._service.acceptRequestForPatientApproval(slot).subscribe(() => {
+      patient.appointmentstatus = 'accept';
+      this.snackBar.open('Appointment accepted!', 'Close', { duration: 2000 });
+      this.sendMail(patient, 'accepted');
     });
   }
 
-  rejectRequest(slot: string, patient: any) {
-    this.responses = this._service.rejectRequestForPatientApproval(slot);
-    patient.status = 'rejected';
-    this.responses = this._service.rejectRequestForPatientApproval(slot);
-    $("#acceptbtn").hide();
-    $("#rejectbtn").hide();
-    $("#acceptedbtn").hide();
-    $("#rejectedbtn").show();
+  rejectRequest(slot: string, patient: Appointment) {
+    this._service.rejectRequestForPatientApproval(slot).subscribe(() => {
+      patient.appointmentstatus = 'reject';
+      this.snackBar.open('Appointment rejected!', 'Close', { duration: 2000 });
+      this.sendMail(patient, 'rejected');
+    });
+  }
 
-    // Send rejection email
+  private sendMail(patient: any, status: 'accepted' | 'rejected') {
     this.emailService.sendAppointmentStatusEmail(
       patient.email,
       patient.patientname,
       patient.date,
       patient.slot,
-      'rejected'
+      status
     ).subscribe({
       next: () => {
-        this.snackBar.open('Appointment rejected and email sent successfully', 'Close', {
-          duration: 3000
-        });
+        this.snackBar.open(`Email ${status} sent successfully`, 'Close', { duration: 2000 });
       },
       error: (error) => {
         console.error('Error sending email:', error);
-        // this.snackBar.open('Error sending email notification', 'Close', {
-        //   duration: 3000
-        // });
       }
     });
   }
