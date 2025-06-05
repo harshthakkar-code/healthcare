@@ -9,28 +9,38 @@
 
 <div class="nordis-grid">
   <div *ngFor="let doctor of doctors | async" class="nordis-doctor-card">
+    <!-- Doctor Image (Dynamic with fallback) -->
     <div class="nordis-doctor-image">
       <div class="nordis-doctor-avatar">
-        <img *ngIf="doctor.gender === 'Male' || doctor.gender === 'male'" [src]="'assets/img/maledoctor.png'" alt="Male Doctor">
-        <img *ngIf="doctor.gender === 'Female' || doctor.gender === 'female'" [src]="'assets/img/femaledoctor.png'" alt="Female Doctor">
+        <img *ngIf="doctor.photo; else fallbackImage"
+             [src]="doctor.photo"
+             alt="Doctor Photo"
+             style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;">
+        <ng-template #fallbackImage>
+          <img [src]="doctor.gender === 'Female' || doctor.gender === 'female' ? 'assets/img/femaledoctor.png' : 'assets/img/maledoctor.png'"
+               alt="Default Doctor"
+               style="width: 120px; height: 120px; border-radius: 50%;">
+        </ng-template>
       </div>
     </div>
-  <div class="nordis-doctor-details">
-  <span class="nordis-label">Name:</span>
-  <span class="nordis-value">{{doctor.doctorname}}</span>
-  <span class="nordis-label">Specialization:</span>
-  <span class="nordis-value">{{doctor.specialization}}</span>
-  <span class="nordis-label">Experience:</span>
-  <span class="nordis-value">{{doctor.experience}} Year(s)</span>
-  <span class="nordis-label">Email:</span>
-  <span class="nordis-value">{{doctor.email}}</span>
-  <span class="nordis-label">Mobile:</span>
-  <span class="nordis-value">{{doctor.mobile}}</span>
-  <span class="nordis-label">Gender:</span>
-  <span class="nordis-value">{{doctor.gender}}</span>
-</div>
 
+    <!-- Doctor Details -->
+    <div class="nordis-doctor-details">
+      <span class="nordis-label">Name:</span>
+      <span class="nordis-value">{{doctor.doctorname}}</span>
+      <span class="nordis-label">Specialization:</span>
+      <span class="nordis-value">{{doctor.specialization}}</span>
+      <span class="nordis-label">Experience:</span>
+      <span class="nordis-value">{{doctor.experience}} Year(s)</span>
+      <span class="nordis-label">Email:</span>
+      <span class="nordis-value">{{doctor.email}}</span>
+      <span class="nordis-label">Mobile:</span>
+      <span class="nordis-value">{{doctor.mobile}}</span>
+      <span class="nordis-label">Gender:</span>
+      <span class="nordis-value">{{doctor.gender}}</span>
+    </div>
 
+    <!-- Status Badge -->
     <div
       class="nordis-doc-status"
       [ngClass]="{
@@ -39,7 +49,7 @@
         'rejected': doctor.status === 'reject'
       }"
     >
-      <b *ngIf="doctor.status === 'accept'">Approved </b>
+      <b *ngIf="doctor.status === 'accept'">Approved</b>
       <b *ngIf="doctor.status === 'false'">Pending</b>
       <b *ngIf="doctor.status === 'reject'">Rejected</b>
     </div>

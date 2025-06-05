@@ -4,12 +4,23 @@
 
 <div class="nordis-grid">
   <div *ngFor="let user of users | async" class="nordis-doctor-card">
+    
+    <!-- User Image -->
     <div class="nordis-doctor-image">
       <div class="nordis-doctor-avatar">
-        <img *ngIf="user.gender === 'Male' || user.gender === 'male'" [src]="'assets/img/maleuser.png'" alt="Male User">
-        <img *ngIf="user.gender === 'Female' || user.gender === 'female'" [src]="'assets/img/femaleuser.png'" alt="Female User">
+        <img *ngIf="user.photo; else fallbackImage"
+             [src]="user.photo"
+             alt="User Photo"
+             style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;">
+        <ng-template #fallbackImage>
+          <img [src]="user.gender === 'Female' || user.gender === 'female' ? 'assets/img/femaleuser.png' : 'assets/img/maleuser.png'"
+               alt="Default User"
+               style="width: 120px; height: 120px; border-radius: 50%;">
+        </ng-template>
       </div>
     </div>
+
+    <!-- User Details -->
     <div class="nordis-doctor-details">
       <div class="nordis-detail-row">
         <span class="nordis-label">Name:</span>
