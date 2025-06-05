@@ -13,16 +13,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import io.github.cdimascio.dotenv.Dotenv;
+
 
 @Service
 public class EmailService {
     private static final Logger logger = LoggerFactory.getLogger(EmailService.class);
+     
+      Dotenv dotenv = Dotenv.load();
+        String sendGridApiKey = dotenv.get("SENDGRID_API_KEY");
+        String fromEmail = dotenv.get("SENDGRID_FROM_EMAIL");
 
-    @Value("${sendgrid.api.key}")
-    private String sendGridApiKey;
-
-    @Value("${sendgrid.from.email}")
-    private String fromEmail;
 
     public void sendAppointmentStatusEmail(String toEmail, String patientName, String appointmentDate, 
                                          String appointmentSlot, String status) throws IOException {
