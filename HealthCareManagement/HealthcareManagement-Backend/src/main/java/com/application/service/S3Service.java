@@ -9,6 +9,7 @@ import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import software.amazon.awssdk.services.s3.model.GetUrlRequest;
+import io.github.cdimascio.dotenv.Dotenv;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -20,11 +21,15 @@ public class S3Service {
     private final String bucketName = "varmd";  // replace with actual bucket
 
     public S3Service() {
+
+         Dotenv dotenv = Dotenv.load();
+        String accessKey = dotenv.get("AWS_ACCESS_KEY");
+        String secretKey = dotenv.get("AWS_SECRET_KEY");
         this.s3 = S3Client.builder()
                 .region(Region.EU_NORTH_1)  // Replace with your region
                 .credentialsProvider(
                         StaticCredentialsProvider.create(AwsBasicCredentials.create(
-                                "AKIAQMKGAGLXTYVNE6MF", "HhfxSDt74/fA86VB5zFjxjt7ztLSQXSoier6f4N3"
+                                accessKey, secretKey
                         ))
                 )
                 .build();
