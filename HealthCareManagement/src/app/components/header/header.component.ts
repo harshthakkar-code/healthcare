@@ -60,7 +60,7 @@ export class HeaderComponent implements OnInit {
     if (this.currRole === 'admin') {
       this._router.navigate(['/admin/edit-profile']); // Example route
     } else if (this.currRole === 'doctor') {
-      this._router.navigate(['/doctor/edit-profile']);
+      this._router.navigate(['/editdoctorprofile']);
     } else if (this.currRole === 'user') {
       this._router.navigate(['/edituserprofile']);
     }
