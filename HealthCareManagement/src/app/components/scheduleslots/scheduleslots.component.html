@@ -2,7 +2,7 @@
 
 <!-- SLOT PREVIEW BLOCK (hidden if add slot form is open) -->
 <div class="container" id="slot-preview" *ngIf="!showAddSlotForm">
-  <h2 class="textual" style="color: darkgreen;"><i class="fa fa-calendar"></i> Your Patient Visiting Slots</h2>
+  <h2 class="textual" style="color: black;"><i class="fa fa-calendar"></i> Your Patient Visiting Slots</h2>
 
   <div class="slot-card-block" style="display: flex; align-items: flex-start; gap: 28px; margin-bottom: 24px;">
     <div class="img-block"
@@ -78,16 +78,16 @@
       <input type="text" class="form-control" name="doctorname" [(ngModel)]="slot.doctorname" required
         #doctorname="ngModel" placeholder="Enter your name"
         [class.is-invalid]="doctorname.invalid && doctorname.touched">
-      <small class="text-danger" *ngIf="doctorname.errors?.required && doctorname.touched">Required field</small>
+      <small class="text-danger" *ngIf="doctorname.errors?.required && doctorname.touched">Please enter your Name</small>
     </div>
-    <small style="color: gray; font-size: 10px;">Please enter full name with initial</small>
+    <!-- <small style="color: gray; font-size: 10px;">Please enter full name with initial</small> -->
 
     <div class="form-group">
       <label for="email">Email Address <b class="text-danger">*</b></label>
       <input type="email" class="form-control" name="email" [(ngModel)]="slot.email" required
         pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" #email="ngModel" placeholder="Enter email address"
         [class.is-invalid]="email.invalid && email.touched">
-      <small class="text-danger" *ngIf="email.errors?.required && email.touched">Required field</small>
+      <small class="text-danger" *ngIf="email.errors?.required && email.touched">Please enter your email</small>
       <small class="text-danger" *ngIf="email.errors?.pattern && email.touched">Invalid email address</small>
     </div>
 
@@ -96,11 +96,10 @@
       <input type="text" class="form-control" name="specialization" [(ngModel)]="slot.specialization" required
         #specialization="ngModel" placeholder="Enter specialization"
         [class.is-invalid]="specialization.invalid && specialization.touched">
-      <small class="text-danger" *ngIf="specialization.errors?.required && specialization.touched">Required
-        field</small>
+      <small class="text-danger" *ngIf="specialization.errors?.required && specialization.touched">Please enter your specialization</small>
     </div>
-    <small style="color: gray; font-size: 10px;">Please mention your specialization (e.g. Cardiologist,
-      Gynaecologist)</small>
+    <!-- <small style="color: gray; font-size: 10px;">Please mention your specialization (e.g. Cardiologist,
+      Gynaecologist)</small> -->
 
     <div class="form-group">
       <label for="amslot">AM Slot Timings <b class="text-danger">*</b></label>
@@ -111,7 +110,7 @@
         <option>9.30 AM - 11.30 AM</option>
         <option>10.00 AM - 12.00 AM</option>
       </select>
-      <small class="text-danger" *ngIf="amslot.errors?.required && amslot.touched">Required field</small>
+      <small class="text-danger" *ngIf="amslot.errors?.required && amslot.touched">Please select AM slot</small>
     </div>
 
     <div class="form-group">
@@ -123,7 +122,7 @@
         <option>1.30 PM - 3.30 PM</option>
         <option>2.00 PM - 4.00 PM</option>
       </select>
-      <small class="text-danger" *ngIf="noonslot.errors?.required && noonslot.touched">Required field</small>
+      <small class="text-danger" *ngIf="noonslot.errors?.required && noonslot.touched">Please select Noon slot</small>
     </div>
 
     <div class="form-group">
@@ -135,14 +134,14 @@
         <option>5.30 PM - 7.30 PM</option>
         <option>6.00 PM - 8.00 PM</option>
       </select>
-      <small class="text-danger" *ngIf="pmslot.errors?.required && pmslot.touched">Required field</small>
+      <small class="text-danger" *ngIf="pmslot.errors?.required && pmslot.touched">Please select PM slot</small>
     </div>
 
     <div class="form-group">
       <label for="date">Available Date <b class="text-danger">*</b></label>
       <input type="date" class="form-control" name="date" [(ngModel)]="slot.date" required #date="ngModel"
         [class.is-invalid]="date.invalid && date.touched">
-      <small class="text-danger" *ngIf="date.errors?.required && date.touched">Required field</small>
+      <small class="text-danger" *ngIf="date.errors?.required && date.touched">Please select date</small>
     </div>
 
     <div class="form-group">
@@ -155,7 +154,7 @@
         <option>Both IN & OUT Patients</option>
         <option>Emergency Operations</option>
       </select>
-      <small class="text-danger" *ngIf="patienttype.errors?.required && patienttype.touched">Required field</small>
+      <small class="text-danger" *ngIf="patienttype.errors?.required && patienttype.touched">Please select patient type</small>
     </div>
 
     <div style="display:flex; gap:12px; margin-top: 15px;">

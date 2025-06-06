@@ -36,7 +36,7 @@
          <div style="color: darkblue; font-weight: 800; margin-bottom: 2%;">Prescription : <b style="color: maroon; margin-left: 14.5%;">{{patient.prescription}}</b></div>
          <div style="color: darkblue; font-weight: 800; margin-bottom: 1%; ">Admission Status : 
             <b style="color: white; background-color: rgb(245, 168, 24); border-radius: 15px; padding: 5px 15px 5px 15px; margin-left: 6%;" *ngIf="patient.admissionstatus === 'false'">Admission Pending</b>
-            <b style="color: white; background-color: darkgreen; border-radius: 15px; padding: 5px 15px 5px 15px; margin-left: 6%;" *ngIf="patient.admissionstatus === 'accept'">Admitted</b>
+            <b style="color: white; background-color: black; border-radius: 15px; padding: 5px 15px 5px 15px; margin-left: 6%;" *ngIf="patient.admissionstatus === 'accept'">Admitted</b>
             <b style="color: white; background-color: red; border-radius: 15px; padding: 5px 15px 5px 15px; margin-left: 6%;" *ngIf="patient.admissionstatus === 'reject'">Rejected</b>
         </div>
          <br><br>

@@ -15,7 +15,7 @@ body, .container, input, select, textarea, .registerbtn, .textual, label, th, td
 }
 
 .textual {
-  color: darkgreen !important;
+  color: black !important;
   text-align: center;
   font-size: 2rem !important;
   font-weight: 800 !important;

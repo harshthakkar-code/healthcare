@@ -13,7 +13,7 @@
   <input type="text" class="form-control" placeholder="Full name of the patient with initial" name="patientname"
     [(ngModel)]="appointment.patientname" required #patientname="ngModel"
     [class.is-invalid]="patientname.invalid && patientname.touched">
-  <small class="text-danger" *ngIf="patientname.errors?.required && patientname.touched">Patient Name is required.</small>
+  <small class="text-danger" *ngIf="patientname.errors?.required && patientname.touched">Please enter patient name</small>
 </div>
 
 <div class="form-group">
@@ -21,8 +21,8 @@
   <input type="email" class="form-control" placeholder="Enter a valid email address" name="patientemail"
     [(ngModel)]="appointment.email" required pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" #patientemail="ngModel"
     [class.is-invalid]="patientemail.invalid && patientemail.touched">
-  <small class="text-danger" *ngIf="patientemail.errors?.required && patientemail.touched">Email is required.</small>
-  <small class="text-danger" *ngIf="patientemail.errors?.pattern && patientemail.touched">Invalid email address.</small>
+  <small class="text-danger" *ngIf="patientemail.errors?.required && patientemail.touched">Please enter an email address.</small>
+  <small class="text-danger" *ngIf="patientemail.errors?.pattern && patientemail.touched">Please enter a valid email address.</small>
 </div>
 
 <div class="form-group">
@@ -32,7 +32,7 @@
     <option value="" disabled selected>Select doctor</option>
     <option *ngFor="let doctor of doctors | async" [value]="doctor">{{doctor}}</option>
   </select>
-  <small class="text-danger" *ngIf="doctor.errors?.required && doctor.touched">Doctor is required.</small>
+  <small class="text-danger" *ngIf="doctor.errors?.required && doctor.touched">Please select a doctor.</small>
 </div>
 
 <div class="form-group">
@@ -42,14 +42,14 @@
     <option value="" disabled selected>Select specialization</option>
     <option *ngFor="let speciality of specializations | async" [value]="speciality">{{speciality}}</option>
   </select>
-  <small class="text-danger" *ngIf="specialization.errors?.required && specialization.touched">Specialization is required.</small>
+  <small class="text-danger" *ngIf="specialization.errors?.required && specialization.touched">Please select a specialization.</small>
 </div>
 
 <div class="form-group">
   <label for="date">Appointment Date <b class="text-danger">*</b></label>
   <input type="date" class="form-control" name="date" [(ngModel)]="appointment.date" required #date="ngModel"
     [class.is-invalid]="date.invalid && date.touched">
-  <small class="text-danger" *ngIf="date.errors?.required && date.touched">Appointment date is required.</small>
+  <small class="text-danger" *ngIf="date.errors?.required && date.touched">Please select a date.</small>
 </div>
 
 <div class="form-group">
@@ -61,14 +61,14 @@
     <option>Noon slot</option>
     <option>PM slot</option>
   </select>
-  <small class="text-danger" *ngIf="slot.errors?.required && slot.touched">Appointment slot is required.</small>
+  <small class="text-danger" *ngIf="slot.errors?.required && slot.touched">Please select a slot.</small>
 </div>
 
 <div class="form-group">
   <label for="age">Patient Age <b class="text-danger">*</b></label>
   <input type="text" class="form-control" placeholder="Enter patient age" name="age" [(ngModel)]="appointment.age" required #age="ngModel"
     [class.is-invalid]="age.invalid && age.touched">
-  <small class="text-danger" *ngIf="age.errors?.required && age.touched">Age is required.</small>
+  <small class="text-danger" *ngIf="age.errors?.required && age.touched">Please enter patient age.</small>
 </div>
 
 <div class="form-group">
@@ -80,14 +80,14 @@
     <option>Female</option>
     <option>Other</option>
   </select>
-  <small class="text-danger" *ngIf="gender.errors?.required && gender.touched">Gender is required.</small>
+  <small class="text-danger" *ngIf="gender.errors?.required && gender.touched">Please select patient gender.</small>
 </div>
 
 <div class="form-group">
   <label for="problem">Patient's Problem <b class="text-danger">*</b></label>
   <input type="text" class="form-control" placeholder="Describe the problem" name="problem" [(ngModel)]="appointment.problem" required #problem="ngModel"
     [class.is-invalid]="problem.invalid && problem.touched">
-  <small class="text-danger" *ngIf="problem.errors?.required && problem.touched">Problem description is required.</small>
+  <small class="text-danger" *ngIf="problem.errors?.required && problem.touched">Please describe the problem.</small>
 </div>
 
    

@@ -18,7 +18,7 @@
           <i class="fa fa-home"></i> Home
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="currRole !== 'doctor'">
         <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/doctorlist']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
           <i class="fa fa-user-md"></i> Doctors List
         </a>

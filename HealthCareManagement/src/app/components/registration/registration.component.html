@@ -25,13 +25,13 @@
           <div class="nordis-field-row-pair">
             <div class="input-block">
               <input type="text" name="username" placeholder="User Name *" [(ngModel)]="user.username" #username="ngModel" required />
-              <div class="nordis-error" *ngIf="username.invalid && username.touched">User name is required</div>
+              <div class="nordis-error" *ngIf="username.invalid && username.touched">Please enter user name</div>
             </div>
             <div class="input-block">
               <input type="email" name="email" placeholder="Email Address *" [(ngModel)]="user.email" #useremail="ngModel" required email />
               <div class="nordis-error" *ngIf="useremail.invalid && useremail.touched">
-                <span *ngIf="useremail.errors?.required">Email is required</span>
-                <span *ngIf="useremail.errors?.email">Invalid email address</span>
+                <span *ngIf="useremail.errors?.required">Please enter your email</span>
+                <span *ngIf="useremail.errors?.email">Please enter valid email</span>
               </div>
             </div>
           </div>
@@ -39,22 +39,22 @@
           <div class="nordis-field-row-pair">
             <div class="input-block">
               <input type="text" name="usergender" placeholder="Gender *" [(ngModel)]="user.gender" #usergender="ngModel" required />
-              <div class="nordis-error" *ngIf="usergender.invalid && usergender.touched">Gender is required</div>
+              <div class="nordis-error" *ngIf="usergender.invalid && usergender.touched">Please enter your gender</div>
             </div>
             <div class="input-block">
               <input type="tel" name="usermobile" maxlength="10" minlength="10" placeholder="Mobile *" [(ngModel)]="user.mobile" #usermobile="ngModel" required />
-              <div class="nordis-error" *ngIf="usermobile.invalid && usermobile.touched">Mobile is required</div>
+              <div class="nordis-error" *ngIf="usermobile.invalid && usermobile.touched">Please enter your mobile</div>
             </div>
           </div>
           <!-- Row 3 -->
           <div class="nordis-field-row-pair">
             <div class="input-block">
               <input type="number" name="userage" placeholder="Your Age *" [(ngModel)]="user.age" #userage="ngModel" required />
-              <div class="nordis-error" *ngIf="userage.invalid && userage.touched">Age is required</div>
+              <div class="nordis-error" *ngIf="userage.invalid && userage.touched">Please enter your age</div>
             </div>
             <div class="input-block">
               <input type="text" name="useraddress" placeholder="Address *" [(ngModel)]="user.address" #useraddress="ngModel" required />
-              <div class="nordis-error" *ngIf="useraddress.invalid && useraddress.touched">Address is required</div>
+              <div class="nordis-error" *ngIf="useraddress.invalid && useraddress.touched">Please enter your address</div>
             </div>
           </div>
           <!-- Row 4 -->
@@ -74,7 +74,7 @@
                   </svg>
                 </span>
               </div>
-              <div class="nordis-error" *ngIf="userpassword.invalid && userpassword.touched">Password is required</div>
+              <div class="nordis-error" *ngIf="userpassword.invalid && userpassword.touched">Please enter password</div>
             </div>
             <div class="input-block">
               <div class="password-field">
@@ -92,7 +92,7 @@
                 </span>
               </div>
               <div class="nordis-error" *ngIf="userconfirmPassword.invalid && userconfirmPassword.touched">
-                Confirm password is required
+                Please confirm your password
               </div>
               <div class="nordis-error" *ngIf="userconfirmPassword.touched && user.confirmPassword && user.password !== user.confirmPassword">
                 Passwords do not match
@@ -120,11 +120,11 @@
           <div class="nordis-field-row-pair">
             <div class="input-block">
               <input type="text" name="doctorname" placeholder="Doctor Name *" [(ngModel)]="doctor.doctorname" #doctorname="ngModel" required />
-              <div class="nordis-error" *ngIf="doctorname.invalid && doctorname.touched">Doctor name is required</div>
+              <div class="nordis-error" *ngIf="doctorname.invalid && doctorname.touched">Please enter doctor name</div>
             </div>
             <div class="input-block">
               <input type="text" name="specialization" placeholder="Specialization *" [(ngModel)]="doctor.specialization" #specialization="ngModel" required />
-              <div class="nordis-error" *ngIf="specialization.invalid && specialization.touched">Specialization is required</div>
+              <div class="nordis-error" *ngIf="specialization.invalid && specialization.touched">Please enter specialization</div>
             </div>
           </div>
           <!-- Row 2 -->
@@ -132,35 +132,35 @@
             <div class="input-block">
               <input type="email" name="doctoremail" placeholder="Email Address *" [(ngModel)]="doctor.email" #doctoremail="ngModel" required email />
               <div class="nordis-error" *ngIf="doctoremail.invalid && doctoremail.touched">
-                <span *ngIf="doctoremail.errors?.required">Email is required</span>
-                <span *ngIf="doctoremail.errors?.email">Invalid email address</span>
+                <span *ngIf="doctoremail.errors?.required">Please enter your email</span>
+                <span *ngIf="doctoremail.errors?.email">Please enter valid email</span>
               </div>
             </div>
             <div class="input-block">
               <input type="number" name="experience" placeholder="Year of Experience *" [(ngModel)]="doctor.experience" #experience="ngModel" required />
-              <div class="nordis-error" *ngIf="experience.invalid && experience.touched">Experience is required</div>
+              <div class="nordis-error" *ngIf="experience.invalid && experience.touched">Please enter experience</div>
             </div>
           </div>
           <!-- Row 3 -->
           <div class="nordis-field-row-pair">
             <div class="input-block">
               <input type="text" name="doctorgender" placeholder="Gender *" [(ngModel)]="doctor.gender" #doctorgender="ngModel" required />
-              <div class="nordis-error" *ngIf="doctorgender.invalid && doctorgender.touched">Gender is required</div>
+              <div class="nordis-error" *ngIf="doctorgender.invalid && doctorgender.touched">Please enter your gender</div>
             </div>
             <div class="input-block">
               <input type="text" name="previoushospital" placeholder="Previous Working Hospital *" [(ngModel)]="doctor.previoushospital" #previoushospital="ngModel" required />
-              <div class="nordis-error" *ngIf="previoushospital.invalid && previoushospital.touched">Previous hospital is required</div>
+              <div class="nordis-error" *ngIf="previoushospital.invalid && previoushospital.touched">Please enter previous working hospital</div>
             </div>
           </div>
           <!-- Row 4 -->
           <div class="nordis-field-row-pair">
             <div class="input-block">
               <input type="tel" name="doctormobile" maxlength="10" minlength="10" placeholder="Mobile *" [(ngModel)]="doctor.mobile" #doctormobile="ngModel" required />
-              <div class="nordis-error" *ngIf="doctormobile.invalid && doctormobile.touched">Mobile is required</div>
+              <div class="nordis-error" *ngIf="doctormobile.invalid && doctormobile.touched">Please enter your mobile</div>
             </div>
             <div class="input-block">
               <input type="text" name="doctoraddress" placeholder="Address *" [(ngModel)]="doctor.address" #doctoraddress="ngModel" required />
-              <div class="nordis-error" *ngIf="doctoraddress.invalid && doctoraddress.touched">Address is required</div>
+              <div class="nordis-error" *ngIf="doctoraddress.invalid && doctoraddress.touched">Please enter your address</div>
             </div>
           </div>
           <!-- Row 5 -->
@@ -180,7 +180,7 @@
                   </svg>
                 </span>
               </div>
-              <div class="nordis-error" *ngIf="doctorpassword.invalid && doctorpassword.touched">Password is required</div>
+              <div class="nordis-error" *ngIf="doctorpassword.invalid && doctorpassword.touched">Please enter your password</div>
             </div>
             <div class="input-block">
               <div class="password-field">
@@ -198,7 +198,7 @@
                 </span>
               </div>
               <div class="nordis-error" *ngIf="doctorconfirmPassword.invalid && doctorconfirmPassword.touched">
-                Confirm password is required
+                Please confirm your password
               </div>
               <div class="nordis-error" *ngIf="doctorconfirmPassword.touched && doctor.confirmPassword && doctor.password !== doctor.confirmPassword">
                 Passwords do not match

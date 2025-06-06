@@ -35,8 +35,8 @@
           <input type="email" class="form-control" placeholder="Enter email" name="email"
                  [(ngModel)]="user.email" required #email="ngModel" email />
           <div *ngIf="email.touched && email.invalid">
-            <small class="text-danger" *ngIf="email.errors?.required">Email is required</small>
-            <small class="text-danger" *ngIf="email.errors?.email">Invalid email Id</small>
+            <small class="text-danger" *ngIf="email.errors?.required">Please enter your email</small>
+            <small class="text-danger" *ngIf="email.errors?.email">Please enter valid email</small>
           </div>
         </div>
         <div class="form-group">
@@ -59,7 +59,7 @@
             </span>
           </div>
           <div *ngIf="password.touched && password.invalid">
-            <small class="text-danger" *ngIf="password.errors?.required">Password is required</small>
+            <small class="text-danger" *ngIf="password.errors?.required">Please enter your password</small>
           </div>
         </div>
         <!-- <div class="checkbox">
@@ -85,8 +85,8 @@
           <input type="email" class="form-control" placeholder="Enter email" name="doctoremail"
                  [(ngModel)]="doctor.email" required #doctoremail="ngModel" email />
           <div *ngIf="doctoremail.touched && doctoremail.invalid">
-            <small class="text-danger" *ngIf="doctoremail.errors?.required">Email is required</small>
-            <small class="text-danger" *ngIf="doctoremail.errors?.email">Invalid email Id</small>
+            <small class="text-danger" *ngIf="doctoremail.errors?.required">Please enter your email</small>
+            <small class="text-danger" *ngIf="doctoremail.errors?.email">Please enter valid email</small>
           </div>
         </div>
         <div class="form-group">
@@ -109,7 +109,7 @@
             </span>
           </div>
           <div *ngIf="doctorpassword.touched && doctorpassword.invalid">
-            <small class="text-danger" *ngIf="doctorpassword.errors?.required">Password is required</small>
+            <small class="text-danger" *ngIf="doctorpassword.errors?.required">Please enter your password</small>
           </div>
         </div>
         <!-- <div class="checkbox">
@@ -135,8 +135,8 @@
           <input type="email" class="form-control" placeholder="Enter admin email" name="email"
                  [(ngModel)]="adminEmail" required #adminemail="ngModel" email />
           <div *ngIf="adminemail.touched && adminemail.invalid">
-            <small class="text-danger" *ngIf="adminemail.errors?.required">Email is required</small>
-            <small class="text-danger" *ngIf="adminemail.errors?.email">Invalid email Id</small>
+            <small class="text-danger" *ngIf="adminemail.errors?.required">Please enter your email</small>
+            <small class="text-danger" *ngIf="adminemail.errors?.email">Please enter valid email</small>
           </div>
         </div>
         <div class="form-group">
@@ -159,7 +159,7 @@
             </span>
           </div>
           <div *ngIf="adminpassword.touched && adminpassword.invalid">
-            <small class="text-danger" *ngIf="adminpassword.errors?.required">Password is required</small>
+            <small class="text-danger" *ngIf="adminpassword.errors?.required">Please enter your password</small>
           </div>
         </div>
         <div class="checkbox" style="justify-content:flex-end;">
