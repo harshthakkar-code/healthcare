@@ -12,12 +12,15 @@
     <div class="nordis-register-right">
       <!-- Tabs -->
       <div class="nordis-switch-tabs">
-        <button [ngClass]="{active: activeTab==='user'}" type="button" (click)="activeTab='user'">User</button>
-        <button [ngClass]="{active: activeTab==='doctor'}" type="button" (click)="activeTab='doctor'">Doctor</button>
+        <button [ngClass]="{active: activeTab==='user'}" type="button"
+          (click)="activeTab='user'">User</button>
+        <button [ngClass]="{active: activeTab==='doctor'}" type="button"
+          (click)="activeTab='doctor'">Doctor</button>
       </div>
 
       <!-- USER REGISTRATION FORM -->
-      <form *ngIf="activeTab==='user'" #userform="ngForm" (ngSubmit)="registerUser()" autocomplete="off" novalidate>
+      <form *ngIf="activeTab==='user'" #userform="ngForm"
+        (ngSubmit)="registerUser()" autocomplete="off" novalidate>
         <h2 class="nordis-title">User Registration</h2>
         <div class="nordis-msg" *ngIf="msg"><b>{{msg}}</b></div>
         <div class="nordis-fields-row">
@@ -38,12 +41,24 @@
           <!-- Row 2 -->
           <div class="nordis-field-row-pair">
             <div class="input-block">
-              <input type="text" name="usergender" placeholder="Gender *" [(ngModel)]="user.gender" #usergender="ngModel" required />
-              <div class="nordis-error" *ngIf="usergender.invalid && usergender.touched">Please enter your gender</div>
+              <select name="usergender" [(ngModel)]="user.gender"
+                #usergender="ngModel" required>
+                <option value disabled selected>Select Gender *</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+              <div class="nordis-error"
+                *ngIf="usergender.invalid && usergender.touched">Please select Gender</div>
+
             </div>
             <div class="input-block">
-              <input type="tel" name="usermobile" maxlength="10" minlength="10" placeholder="Mobile *" [(ngModel)]="user.mobile" #usermobile="ngModel" required />
-              <div class="nordis-error" *ngIf="usermobile.invalid && usermobile.touched">Please enter your mobile</div>
+              <input type="tel" name="usermobile" maxlength="10" minlength="10"
+                placeholder="Mobile *" [(ngModel)]="user.mobile"
+                #usermobile="ngModel" required />
+              <div class="nordis-error"
+                *ngIf="usermobile.invalid && usermobile.touched">Mobile is
+                required</div>
             </div>
           </div>
           <!-- Row 3 -->
@@ -61,15 +76,25 @@
           <div class="nordis-field-row-pair">
             <div class="input-block">
               <div class="password-field">
-                <input [type]="showUserPassword ? 'text' : 'password'" name="password" placeholder="Password *"
-                  [(ngModel)]="user.password" #userpassword="ngModel" required />
-                <span class="eye-icon" (click)="showUserPassword = !showUserPassword">
-                  <svg *ngIf="!showUserPassword" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none">
-                    <ellipse cx="12" cy="12" rx="9" ry="6" stroke="#aaa" stroke-width="2" />
-                    <line x1="4" y1="20" x2="20" y2="4" stroke="#aaa" stroke-width="2" />
+                <input [type]="showUserPassword ? 'text' : 'password'"
+                  name="password" placeholder="Password *"
+                  [(ngModel)]="user.password" #userpassword="ngModel"
+                  required />
+                <span class="eye-icon"
+                  (click)="showUserPassword = !showUserPassword">
+                  <svg *ngIf="!showUserPassword"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    width="22" height="22" fill="none">
+                    <ellipse cx="12" cy="12" rx="9" ry="6" stroke="#aaa"
+                      stroke-width="2" />
+                    <line x1="4" y1="20" x2="20" y2="4" stroke="#aaa"
+                      stroke-width="2" />
                   </svg>
-                  <svg *ngIf="showUserPassword" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none">
-                    <ellipse cx="12" cy="12" rx="9" ry="6" stroke="#3dc2b8" stroke-width="2" />
+                  <svg *ngIf="showUserPassword"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    width="22" height="22" fill="none">
+                    <ellipse cx="12" cy="12" rx="9" ry="6" stroke="#3dc2b8"
+                      stroke-width="2" />
                     <circle cx="12" cy="12" r="2.5" fill="#3dc2b8" />
                   </svg>
                 </span>
@@ -78,15 +103,26 @@
             </div>
             <div class="input-block">
               <div class="password-field">
-                <input [type]="showUserConfirmPassword ? 'text' : 'password'" name="confirmPassword"
-                  placeholder="Confirm Password *" [(ngModel)]="user.confirmPassword" #userconfirmPassword="ngModel" required />
-                <span class="eye-icon" (click)="showUserConfirmPassword = !showUserConfirmPassword">
-                  <svg *ngIf="!showUserConfirmPassword" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none">
-                    <ellipse cx="12" cy="12" rx="9" ry="6" stroke="#aaa" stroke-width="2" />
-                    <line x1="4" y1="20" x2="20" y2="4" stroke="#aaa" stroke-width="2" />
+                <input [type]="showUserConfirmPassword ? 'text' : 'password'"
+                  name="confirmPassword"
+                  placeholder="Confirm Password *"
+                  [(ngModel)]="user.confirmPassword"
+                  #userconfirmPassword="ngModel" required />
+                <span class="eye-icon"
+                  (click)="showUserConfirmPassword = !showUserConfirmPassword">
+                  <svg *ngIf="!showUserConfirmPassword"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    width="22" height="22" fill="none">
+                    <ellipse cx="12" cy="12" rx="9" ry="6" stroke="#aaa"
+                      stroke-width="2" />
+                    <line x1="4" y1="20" x2="20" y2="4" stroke="#aaa"
+                      stroke-width="2" />
                   </svg>
-                  <svg *ngIf="showUserConfirmPassword" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none">
-                    <ellipse cx="12" cy="12" rx="9" ry="6" stroke="#3dc2b8" stroke-width="2" />
+                  <svg *ngIf="showUserConfirmPassword"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    width="22" height="22" fill="none">
+                    <ellipse cx="12" cy="12" rx="9" ry="6" stroke="#3dc2b8"
+                      stroke-width="2" />
                     <circle cx="12" cy="12" r="2.5" fill="#3dc2b8" />
                   </svg>
                 </span>
@@ -94,25 +130,30 @@
               <div class="nordis-error" *ngIf="userconfirmPassword.invalid && userconfirmPassword.touched">
                 Please confirm your password
               </div>
-              <div class="nordis-error" *ngIf="userconfirmPassword.touched && user.confirmPassword && user.password !== user.confirmPassword">
+              <div class="nordis-error"
+                *ngIf="userconfirmPassword.touched && user.confirmPassword && user.password !== user.confirmPassword">
                 Passwords do not match
               </div>
             </div>
           </div>
         </div>
         <div class="input-block">
-  <label style="font-weight: 500;">Upload Profile Photo</label>
-  <input type="file" (change)="handleFileInput($event, 'user')" accept="image/*" />
-</div>
+          <label style="font-weight: 500;">Upload Profile Photo</label>
+          <input type="file" (change)="handleFileInput($event, 'user')"
+            accept="image/*" />
+        </div>
         <div class="nordis-checkbox">
-          <input type="checkbox" required name="agree" #agree="ngModel" [(ngModel)]="user.agree" />
+          <input type="checkbox" required name="agree" #agree="ngModel"
+            [(ngModel)]="user.agree" />
           <span>I agree to all Terms & Conditions</span>
         </div>
-        <button [disabled]="userform.invalid" class="nordis-btn" type="submit">Register</button>
+        <button [disabled]="userform.invalid" class="nordis-btn"
+          type="submit">Register</button>
       </form>
 
       <!-- DOCTOR REGISTRATION FORM -->
-      <form *ngIf="activeTab==='doctor'" #doctorform="ngForm" (ngSubmit)="registerDoctor()" autocomplete="off" novalidate>
+      <form *ngIf="activeTab==='doctor'" #doctorform="ngForm"
+        (ngSubmit)="registerDoctor()" autocomplete="off" novalidate>
         <h2 class="nordis-title">Doctor Registration</h2>
         <div class="nordis-msg" *ngIf="msg"><b>{{msg}}</b></div>
         <div class="nordis-fields-row">
@@ -144,12 +185,25 @@
           <!-- Row 3 -->
           <div class="nordis-field-row-pair">
             <div class="input-block">
-              <input type="text" name="doctorgender" placeholder="Gender *" [(ngModel)]="doctor.gender" #doctorgender="ngModel" required />
-              <div class="nordis-error" *ngIf="doctorgender.invalid && doctorgender.touched">Please enter your gender</div>
+              <select name="doctorgender" [(ngModel)]="doctor.gender"
+                #doctorgender="ngModel" required>
+                <option value disabled selected>Select Gender *</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+              <div class="nordis-error"
+                *ngIf="doctorgender.invalid && doctorgender.touched">Please select Gender</div>
+
             </div>
             <div class="input-block">
-              <input type="text" name="previoushospital" placeholder="Previous Working Hospital *" [(ngModel)]="doctor.previoushospital" #previoushospital="ngModel" required />
-              <div class="nordis-error" *ngIf="previoushospital.invalid && previoushospital.touched">Please enter previous working hospital</div>
+              <input type="text" name="previoushospital"
+                placeholder="Previous Working Hospital *"
+                [(ngModel)]="doctor.previoushospital"
+                #previoushospital="ngModel" required />
+              <div class="nordis-error"
+                *ngIf="previoushospital.invalid && previoushospital.touched">Previous
+                hospital is required</div>
             </div>
           </div>
           <!-- Row 4 -->
@@ -167,15 +221,25 @@
           <div class="nordis-field-row-pair">
             <div class="input-block">
               <div class="password-field">
-                <input [type]="showDoctorPassword ? 'text' : 'password'" name="password" placeholder="Password *"
-                  [(ngModel)]="doctor.password" #doctorpassword="ngModel" required />
-                <span class="eye-icon" (click)="showDoctorPassword = !showDoctorPassword">
-                  <svg *ngIf="!showDoctorPassword" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none">
-                    <ellipse cx="12" cy="12" rx="9" ry="6" stroke="#aaa" stroke-width="2" />
-                    <line x1="4" y1="20" x2="20" y2="4" stroke="#aaa" stroke-width="2" />
+                <input [type]="showDoctorPassword ? 'text' : 'password'"
+                  name="password" placeholder="Password *"
+                  [(ngModel)]="doctor.password" #doctorpassword="ngModel"
+                  required />
+                <span class="eye-icon"
+                  (click)="showDoctorPassword = !showDoctorPassword">
+                  <svg *ngIf="!showDoctorPassword"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    width="22" height="22" fill="none">
+                    <ellipse cx="12" cy="12" rx="9" ry="6" stroke="#aaa"
+                      stroke-width="2" />
+                    <line x1="4" y1="20" x2="20" y2="4" stroke="#aaa"
+                      stroke-width="2" />
                   </svg>
-                  <svg *ngIf="showDoctorPassword" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none">
-                    <ellipse cx="12" cy="12" rx="9" ry="6" stroke="#3dc2b8" stroke-width="2" />
+                  <svg *ngIf="showDoctorPassword"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    width="22" height="22" fill="none">
+                    <ellipse cx="12" cy="12" rx="9" ry="6" stroke="#3dc2b8"
+                      stroke-width="2" />
                     <circle cx="12" cy="12" r="2.5" fill="#3dc2b8" />
                   </svg>
                 </span>
@@ -184,15 +248,26 @@
             </div>
             <div class="input-block">
               <div class="password-field">
-                <input [type]="showDoctorConfirmPassword ? 'text' : 'password'" name="confirmPassword"
-                  placeholder="Confirm Password *" [(ngModel)]="doctor.confirmPassword" #doctorconfirmPassword="ngModel" required />
-                <span class="eye-icon" (click)="showDoctorConfirmPassword = !showDoctorConfirmPassword">
-                  <svg *ngIf="!showDoctorConfirmPassword" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none">
-                    <ellipse cx="12" cy="12" rx="9" ry="6" stroke="#aaa" stroke-width="2" />
-                    <line x1="4" y1="20" x2="20" y2="4" stroke="#aaa" stroke-width="2" />
+                <input [type]="showDoctorConfirmPassword ? 'text' : 'password'"
+                  name="confirmPassword"
+                  placeholder="Confirm Password *"
+                  [(ngModel)]="doctor.confirmPassword"
+                  #doctorconfirmPassword="ngModel" required />
+                <span class="eye-icon"
+                  (click)="showDoctorConfirmPassword = !showDoctorConfirmPassword">
+                  <svg *ngIf="!showDoctorConfirmPassword"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    width="22" height="22" fill="none">
+                    <ellipse cx="12" cy="12" rx="9" ry="6" stroke="#aaa"
+                      stroke-width="2" />
+                    <line x1="4" y1="20" x2="20" y2="4" stroke="#aaa"
+                      stroke-width="2" />
                   </svg>
-                  <svg *ngIf="showDoctorConfirmPassword" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none">
-                    <ellipse cx="12" cy="12" rx="9" ry="6" stroke="#3dc2b8" stroke-width="2" />
+                  <svg *ngIf="showDoctorConfirmPassword"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    width="22" height="22" fill="none">
+                    <ellipse cx="12" cy="12" rx="9" ry="6" stroke="#3dc2b8"
+                      stroke-width="2" />
                     <circle cx="12" cy="12" r="2.5" fill="#3dc2b8" />
                   </svg>
                 </span>
@@ -200,22 +275,26 @@
               <div class="nordis-error" *ngIf="doctorconfirmPassword.invalid && doctorconfirmPassword.touched">
                 Please confirm your password
               </div>
-              <div class="nordis-error" *ngIf="doctorconfirmPassword.touched && doctor.confirmPassword && doctor.password !== doctor.confirmPassword">
+              <div class="nordis-error"
+                *ngIf="doctorconfirmPassword.touched && doctor.confirmPassword && doctor.password !== doctor.confirmPassword">
                 Passwords do not match
               </div>
             </div>
           </div>
         </div>
         <div class="input-block">
-  <label style="font-weight: 500;">Upload Profile Photo</label>
-  <input type="file" (change)="handleFileInput($event, 'doctor')" accept="image/*" />
-</div>
+          <label style="font-weight: 500;">Upload Profile Photo</label>
+          <input type="file" (change)="handleFileInput($event, 'doctor')"
+            accept="image/*" />
+        </div>
 
         <div class="nordis-checkbox">
-          <input type="checkbox" required name="agree" #agree="ngModel" [(ngModel)]="doctor.agree" />
+          <input type="checkbox" required name="agree" #agree="ngModel"
+            [(ngModel)]="doctor.agree" />
           <span>I agree to all Terms & Conditions</span>
         </div>
-        <button [disabled]="doctorform.invalid" class="nordis-btn" type="submit">Register</button>
+        <button [disabled]="doctorform.invalid" class="nordis-btn"
+          type="submit">Register</button>
       </form>
     </div>
   </div>
