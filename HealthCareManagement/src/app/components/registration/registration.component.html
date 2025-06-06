@@ -57,8 +57,7 @@
                 placeholder="Mobile *" [(ngModel)]="user.mobile"
                 #usermobile="ngModel" required />
               <div class="nordis-error"
-                *ngIf="usermobile.invalid && usermobile.touched">Mobile is
-                required</div>
+                *ngIf="usermobile.invalid && usermobile.touched">Please enter your mobile</div>
             </div>
           </div>
           <!-- Row 3 -->
@@ -202,8 +201,7 @@
                 [(ngModel)]="doctor.previoushospital"
                 #previoushospital="ngModel" required />
               <div class="nordis-error"
-                *ngIf="previoushospital.invalid && previoushospital.touched">Previous
-                hospital is required</div>
+                *ngIf="previoushospital.invalid && previoushospital.touched">Please enter previous hospital</div>
             </div>
           </div>
           <!-- Row 4 -->
