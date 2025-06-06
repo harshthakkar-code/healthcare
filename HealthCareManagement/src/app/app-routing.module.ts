@@ -27,7 +27,8 @@ import { RouterGuard } from './guards/router.guard';
 import { UserGuard } from './guards/user.guard';
 
 const routes: Routes = [
-  {path:'',component:WelcomepageComponent},
+  // {path:'',component:WelcomepageComponent},
+  {path:'',component:LoginComponent},
   {path:'login',component:LoginComponent},
   {path:'registration',component:RegistrationComponent},
   {path:'registrationsuccess',component:RegistrationsuccessComponent},
