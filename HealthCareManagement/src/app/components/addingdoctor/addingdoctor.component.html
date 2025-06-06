@@ -15,7 +15,7 @@
         placeholder="Enter doctor's full name"
         [class.is-invalid]="doctorname.invalid && doctorname.touched">
       <small class="text-danger" *ngIf="doctorname.errors?.required && doctorname.touched">
-        Doctor name is required.
+        Please enter the doctor's full name.
       </small>
     </div>
 
@@ -27,7 +27,7 @@
         pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" #email="ngModel"
         placeholder="Enter a valid email address"
         [class.is-invalid]="email.invalid && email.touched">
-      <small class="text-danger" *ngIf="email.errors?.required && email.touched">Email is required.</small>
+      <small class="text-danger" *ngIf="email.errors?.required && email.touched">Please enter an email address.</small>
       <small class="text-danger" *ngIf="email.errors?.pattern && email.touched">Invalid email address.</small>
     </div>
 
@@ -39,7 +39,7 @@
         maxlength="10" minlength="10"
         placeholder="Enter 10-digit mobile number"
         [class.is-invalid]="mobile.invalid && mobile.touched">
-      <small class="text-danger" *ngIf="mobile.errors?.required && mobile.touched">Mobile number is required.</small>
+      <small class="text-danger" *ngIf="mobile.errors?.required && mobile.touched">Please enter a mobile number.</small>
       <small class="text-danger" *ngIf="(mobile.errors?.minlength || mobile.errors?.maxlength) && mobile.touched">
         Mobile number must be 10 digits.
       </small>
@@ -57,7 +57,7 @@
         <option>Other</option>
       </select>
       <small class="text-danger" *ngIf="gender.errors?.required && gender.touched">
-        Gender is required.
+        Please select a gender.
       </small>
     </div>
 
@@ -68,7 +68,7 @@
         [(ngModel)]="doctor.experience" required #experience="ngModel" min="3"
         placeholder="Enter years of experience (minimum 3)"
         [class.is-invalid]="experience.invalid && experience.touched">
-      <small class="text-danger" *ngIf="experience.errors?.required && experience.touched">Experience is required.</small>
+      <small class="text-danger" *ngIf="experience.errors?.required && experience.touched">Please enter experience.</small>
       <small class="text-danger" *ngIf="experience.errors?.min && experience.touched">Minimum 3 years required.</small>
     </div>
 
@@ -80,7 +80,7 @@
         placeholder="Enter medical specialization"
         [class.is-invalid]="specialization.invalid && specialization.touched">
       <small class="text-danger" *ngIf="specialization.errors?.required && specialization.touched">
-        Specialization is required.
+        please enter specialization.
       </small>
     </div>
 
@@ -92,7 +92,7 @@
         placeholder="Enter previous hospital name"
         [class.is-invalid]="previoushospital.invalid && previoushospital.touched">
       <small class="text-danger" *ngIf="previoushospital.errors?.required && previoushospital.touched">
-        Previous hospital is required.
+        Please enter previous hospital.
       </small>
     </div>
 
@@ -104,7 +104,7 @@
         placeholder="Enter complete address"
         [class.is-invalid]="address.invalid && address.touched">
       <small class="text-danger" *ngIf="address.errors?.required && address.touched">
-        Address is required.
+        Please enter address.
       </small>
     </div>
 
@@ -123,7 +123,7 @@
         </span>
       </div>
       <small class="text-danger" *ngIf="doctorpassword.errors?.required && doctorpassword.touched">
-        Password is required.
+        Please enter password.
       </small>
     </div>
 

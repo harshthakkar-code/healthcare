@@ -15,7 +15,7 @@ body, .container, input, select, textarea, .registerbtn, .textual, label {
 }
 
 .textual {
-  color: darkgreen !important; /* Make it green for doctor prescription page */
+  color: black !important; /* Make it green for doctor prescription page */
   text-align: center;
   font-size: 2rem !important;
   font-family: 'Montserrat', Arial, sans-serif !important;
@@ -104,7 +104,7 @@ small.text-danger {
   border-radius: 22px;
   font-weight: 700;
   font-size: 1.13rem;
-  color: darkgreen;
+  color: black;
   font-family: 'Montserrat', Arial, sans-serif;
   padding: 20px;
   text-align: center;

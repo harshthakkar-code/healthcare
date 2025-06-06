@@ -19,7 +19,7 @@
           {{patient.patientname}}
         </option>
       </select>
-      <small class="text-danger" *ngIf="patientname.errors?.required && patientname.touched">Patient name is required.</small>
+      <small class="text-danger" *ngIf="patientname.errors?.required && patientname.touched">Please enter patient name.</small>
     </div>
 
     <!-- Doctor Name -->
@@ -31,7 +31,7 @@
         [(ngModel)]="prescriptionobj.doctorname" required #doctorname="ngModel"
         placeholder="Enter your name"
         [class.is-invalid]="doctorname.invalid && doctorname.touched">
-      <small class="text-danger" *ngIf="doctorname.errors?.required && doctorname.touched">Doctor name is required.</small>
+      <small class="text-danger" *ngIf="doctorname.errors?.required && doctorname.touched">Please enter Doctor name.</small>
     </div>
 
     <!-- Disease -->
@@ -41,7 +41,7 @@
         [(ngModel)]="prescriptionobj.disease" required #disease="ngModel"
         placeholder="Enter patient disease"
         [class.is-invalid]="disease.invalid && disease.touched">
-      <small class="text-danger" *ngIf="disease.errors?.required && disease.touched">Disease is required.</small>
+      <small class="text-danger" *ngIf="disease.errors?.required && disease.touched">Please enter patient disease.</small>
     </div>
 
     <!-- Age -->
@@ -53,7 +53,7 @@
         [(ngModel)]="prescriptionobj.age" required #age="ngModel"
         placeholder="Enter patient age"
         [class.is-invalid]="age.invalid && age.touched">
-      <small class="text-danger" *ngIf="age.errors?.required && age.touched">Age is required.</small>
+      <small class="text-danger" *ngIf="age.errors?.required && age.touched">Please enter patient age.</small>
     </div>
 
     <!-- Gender -->
@@ -67,7 +67,7 @@
         <option>Female</option>
         <option>Other</option>
       </select>
-      <small class="text-danger" *ngIf="gender.errors?.required && gender.touched">Gender is required.</small>
+      <small class="text-danger" *ngIf="gender.errors?.required && gender.touched">Please select patient gender.</small>
     </div>
 
     <!-- Prescription -->
@@ -77,7 +77,7 @@
         [(ngModel)]="prescriptionobj.prescription" required #prescription="ngModel"
         placeholder="Enter your prescription here"
         [class.is-invalid]="prescription.invalid && prescription.touched"></textarea>
-      <small class="text-danger" *ngIf="prescription.errors?.required && prescription.touched">Prescription is required.</small>
+      <small class="text-danger" *ngIf="prescription.errors?.required && prescription.touched">Please enter your prescription.</small>
     </div>
 
     <button style="margin-top: 15px;" [disabled]="addprescriptionform.form.invalid"
